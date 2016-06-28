@@ -3,8 +3,6 @@
 	<head>
 		<title>Hello AngularJS</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    
-		
 	</head>
 
 	<body>
@@ -13,14 +11,14 @@
 		debugger;
     $http.get('http://192.168.1.9:9200/logstash-2014.02.10/fluentd/AVV5NdQ7JRTST7Y2p1uK?pretty').
         success(function(data) {
-            $scope.greeting = data;
-			console.log(data);
+            $scope.fluentd = data;
+			console.log($scope.greeting);
         });
 }
 		</script>
 		<div ng-controller="Hello">
-			<p>The ID is {{greeting.action}}</p>
-			<p>The content is {{greeting.user}}</p>
+			<p>The ID is {{fluentd._source.action}}</p>
+			<p>The content is {{fluentd._source.user}}</p>
 		</div>
 	</body>
 </html>
