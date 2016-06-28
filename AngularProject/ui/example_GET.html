@@ -4,17 +4,20 @@
 		<title>Hello AngularJS</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     
-		<script>
-		function Hello($scope, $http) {
-    $http.get('http://192.168.1.9:9200/logstash-2014.02.10/fluentd/AVV5NdQ7JRTST7Y2p1uK?pretty').
-        success(function(data) {
-            $scope.greeting = data;
-        });
-}
-		</script>
+		
 	</head>
 
 	<body>
+	<script>
+		function Hello($scope, $http) {
+		debugger;
+    $http.get('http://192.168.1.9:9200/logstash-2014.02.10/fluentd/AVV5NdQ7JRTST7Y2p1uK?pretty').
+        success(function(data) {
+            $scope.greeting = data;
+			console.log(data);
+        });
+}
+		</script>
 		<div ng-controller="Hello">
 			<p>The ID is {{greeting.action}}</p>
 			<p>The content is {{greeting.user}}</p>

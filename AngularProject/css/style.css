@@ -6,7 +6,7 @@ nav {
 background-color:#FFFFFF;
 margin-left: 105px;
 margin-right: 100px;
-
+margin-top:-20px;
 }
 
 .container-fluid ul li{
@@ -41,7 +41,7 @@ border-radius:10px;
 }
 
 .contentTable{
-background-color:#FFFFCC;
+background-color:#FFFFFF;
 border-radius:10px;
 }
 
@@ -51,4 +51,8 @@ border-radius:10px;
 
 .table{
 margin-top:20px;
+}
+
+body {
+	background-image:url('https://pixabay.com/static/uploads/photo/2016/01/20/21/56/background-1152459_960_720.jpg');
 }
