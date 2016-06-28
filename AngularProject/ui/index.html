@@ -1,0 +1,102 @@
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+  <div class="container">
+  <div class="jumbotron">
+	 <h1 style="color:white"><center>Poetry and Literature Production</center></h1>
+    <p></p>
+  </div>
+</div>
+</head>
+<body style="background-color:#FFFFFF">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Choosen</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li id = 'li1' ><a href="#">Poem</a></li>
+      <li id = 'li2' ><a href="#">Stories</a></li>
+      <li id = 'li3' ><a href="#">Song</a></li>
+	  <li id = 'li4' ><a href="#">Search</a></li>
+
+    </ul>
+  </div>
+</nav>
+<table style="width:100%">
+<tbody>
+<tr>
+<td style="width:35%;padding-left:105px;padding-right:30px;vertical-align: top;margin-top:10px;">
+<div class = "containForm" >
+<form class = "addForm">
+  <fieldset class="form-group" >
+    <h4 for="title">Title</h4>
+    <input type="text" class="form-control" id="title" placeholder="Put Title...">
+    <small class="text-muted">Please fill the Title.</small>
+  </fieldset>
+  <fieldset class="form-group">
+    <h4 for="author">Author</h4>
+    <input type="text" class="form-control" id="author" placeholder="Put Author...">
+	    <small class="text-muted">Please fill Author.</small>
+  </fieldset>
+  <fieldset class="form-group">
+    <h4 for="category">Category</h4>
+    <select class="form-control" id="category">
+      <option>Poem</option>
+      <option>Song</option>
+      <option>Stories</option>
+    </select>
+  </fieldset>
+  <fieldset class="form-group">
+    <h4 for="content">Content</h4>
+    <textarea class="form-control" id="content" rows="10" placeholder="Write the content..."></textarea>
+  </fieldset>
+  <button type="submit" class="btn btn-primary">Add New</button>
+</form>
+</div>
+</td>
+
+<td style="vertical-align: top;margin-top:10px; padding-right:105px;">
+<div class="contentTable">
+  <h2><center>Data List</center></h2>
+  <p>Please take a look for the list**</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</td>
+
+</tr>
+</tbody>
+</table>
+</body>
+</html>
