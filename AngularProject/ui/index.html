@@ -15,7 +15,7 @@
   </div>
 </div>
 </head>
-<body style="background-color:#FFFFFF">
+<body style="background-color:#FFFFFF" ng-app = "myApp">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -64,7 +64,7 @@
 </td>
 
 <td style="vertical-align: top;margin-top:10px; padding-right:105px;">
-<div class="contentTable">
+<div class="contentTable" ng-controller="getAllDataController">
   <h2><center>Data List</center></h2>
   <p>Please take a look for the list**</p>
   <table class="table">
@@ -72,24 +72,22 @@
       <tr>
         <th>Firstname</th>
         <th>Lastname</th>
-        <th>Email</th>
+        <th>Age</th>
+		<th>Gender</th>
+		<th>Address</th>
+		<th>Employee</th>
+		<th>Email</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
+      <tr ng-repeat="account in accounts">
+        <td> {{account._source.firstname}}</td>
+        <td> {{account._source.lastname}}</td>
+        <td> {{account._source.age}}</td>
+		<td> {{account._source.gender}}</td>
+        <td> {{account._source.address}}</td>
+        <td> {{account._source.employer}}</td>
+        <td> {{account._source.email}}</td>
       </tr>
     </tbody>
   </table>
