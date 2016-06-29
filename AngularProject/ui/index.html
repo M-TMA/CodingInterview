@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/style.css">
   <div class="container">
   <div class="jumbotron">
-	 <h1 style="color:white"><center>Poetry and Literature Production</center></h1>
+	 <h1 style="color:black"><center>Poetry and Literature Production</center></h1>
     <p></p>
   </div>
 </div>
@@ -52,8 +52,8 @@
   <fieldset class="form-group">
     <h4 for="gender">Gender</h4>
     <select class="form-control" ng-model = "gender" id="gender">
-      <option>Male</option>
-      <option>Female</option>
+      <option value = "Male" >Male</option>
+      <option value = "Female" >Female</option>
     </select>
 	<small class="text-muted">Please Select Your Gender.</small>
   </fieldset>
@@ -68,6 +68,10 @@
    <fieldset class="form-group">
     <h4 for="email">Email</h4>
     <input type="text" class="form-control" id="email" ng-model = "email" placeholder="Put your email...">
+  </fieldset>
+   <fieldset class="form-group">
+    <h4 for="description">Description</h4>
+	<textarea class="form-control" rows="4" cols="50" id="description" ng-model = "description" placeholder="Write some your description..."> </textarea>
   </fieldset>
   <center><button type="submit" class="btn btn-primary" ng-click="add()">Add New</button></center>
 </form>
