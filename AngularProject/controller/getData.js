@@ -8,20 +8,17 @@ app.controller('getDataController', function($scope, $http) {
     });
 })
 
-.controller('getAllDataController', function ($scope,$http){
-	//debugger;
+.controller('ProcessDataController', function ($scope,$http){
+	debugger;
+	$scope.initFirst=function(){
     $http.get('http://192.168.95.222:9200/bank/account/_search?size=30')
     .then(function(response) {
         $scope.accounts = response.data.hits.hits;
 		console.log($scope.accounts);
     });
+}
 	
-	
-})
-
-.controller('addNewController', function ($scope,$http){
-	//debugger;
-$scope.add = function (){
+	$scope.add = function (){
 	debugger;
     var data = JSON.stringify({firstname:$scope.firstname,lastname:$scope.lastname,age:$scope.age,gender:$scope.gender,address:$scope.address, employer: $scope.employer, email:$scope.email}, null);
 		var config = {
@@ -34,10 +31,13 @@ $scope.add = function (){
        function(response){
 		   $scope.account = response.data;
          // success callback
+		  $scope.initFirst();
        }, 
        function(response){
          // failure callback
        }
     );
+	 $scope.initFirst();
 }
-});
+	
+})
