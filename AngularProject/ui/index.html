@@ -19,14 +19,13 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Choosen</a>
+      <a class="navbar-brand" href="#">Choosen Load</a>
     </div>
     <ul class="nav navbar-nav">
-      <li id = 'li1' ><a href="#">Poem</a></li>
-      <li id = 'li2' ><a href="#">Stories</a></li>
-      <li id = 'li3' ><a href="#">Song</a></li>
-	  <li id = 'li4' ><a href="#">Search</a></li>
-
+      <li id = 'li1' ng-click="add()" ><a href="#">Emp By Age</a></li>
+      <li id = 'li2' ng-click="load('Gender')"><a href="#">Emp By Gender</a></li>
+      <li id = 'li3' ng-click="load('Address')"><a href="#">Emp By Address</a></li>
+	  <li id = 'li4' ng-click="search('Search')"><a href="#">Search</a></li>
     </ul>
   </div>
 </nav>
@@ -35,37 +34,49 @@
 <tr>
 <td style="width:35%;padding-left:105px;padding-right:30px;vertical-align: top">
 <div class = "containForm" >
-<form class = "addForm">
+<form class = "addForm" ng-controller="addNewController">
   <fieldset class="form-group" >
-    <h4 for="title">Title</h4>
-    <input type="text" class="form-control" id="title" placeholder="Put Title...">
-    <small class="text-muted">Please fill the Title.</small>
+    <h4 for="firstname">First Name</h4>
+    <input type="text" class="form-control" id="firstname" ng-model = "firstname" placeholder="Put First Name...">
+    <small class="text-muted">Please fill the First Name.</small>
   </fieldset>
   <fieldset class="form-group">
-    <h4 for="author">Author</h4>
-    <input type="text" class="form-control" id="author" placeholder="Put Author...">
-	    <small class="text-muted">Please fill Author.</small>
+    <h4 for="lastname">Last Name</h4>
+    <input type="text" class="form-control" id="lastname" ng-model = "lastname" placeholder="Put last name...">
+	    <small class="text-muted">Please fill Last Name.</small>
+  </fieldset>
+   <fieldset class="form-group">
+    <h4 for="age">Age</h4>
+    <input type="text" class="form-control" id="age" ng-model = "age" placeholder="Put your age...">
   </fieldset>
   <fieldset class="form-group">
-    <h4 for="category">Category</h4>
-    <select class="form-control" id="category">
-      <option>Poem</option>
-      <option>Song</option>
-      <option>Stories</option>
+    <h4 for="gender">Gender</h4>
+    <select class="form-control" ng-model = "gender" id="gender">
+      <option>Male</option>
+      <option>Female</option>
     </select>
+	<small class="text-muted">Please Select Your Gender.</small>
   </fieldset>
   <fieldset class="form-group">
-    <h4 for="content">Content</h4>
-    <textarea class="form-control" id="content" rows="10" placeholder="Write the content..."></textarea>
+    <h4 for="address">Address</h4>
+    <input type="text" class="form-control" id="address" ng-model = "address" placeholder="Put address...">
   </fieldset>
-  <button type="submit" class="btn btn-primary">Add New</button>
+   <fieldset class="form-group">
+    <h4 for="employer">Employee - Company</h4>
+    <input type="text" class="form-control" id="employer" ng-model = "employer" placeholder="Put company name...">
+  </fieldset>
+   <fieldset class="form-group">
+    <h4 for="email">Email</h4>
+    <input type="text" class="form-control" id="email" ng-model = "email" placeholder="Put your email...">
+  </fieldset>
+  <center><button type="submit" class="btn btn-primary" ng-click="add()">Add New</button></center>
 </form>
 </div>
 </td>
 
 <td style="vertical-align: top;margin-top:10px; padding-right:105px;">
-<div class="contentTable" ng-controller="getAllDataController">
-  <h2><center>Data List</center></h2>
+<div class="contentTable"  ng-controller="getAllDataController" >
+  <h2 style="background-color:green;color:white;border-radius:10px"><center>Data List</center></h2>
   <p>Please take a look for the list**</p>
   <table class="table">
     <thead>
