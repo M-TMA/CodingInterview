@@ -1,22 +1,16 @@
 // Get 1 Data from RestService
 var app = angular.module('myApp', []);
-app.controller('getDataController', function($scope, $http) {
+app.controller('ProcessDataController', function ($scope,$http){
 	debugger;
-    $http.get('http://192.168.95.222:9200/bank/account/25?pretty')
-    .then(function(response) {
-        $scope.fluentd = response.data;
-    });
-})
-
-.controller('ProcessDataController', function ($scope,$http){
-	debugger;
-	$scope.initFirst=function(){
+	
+	$scope.initFirst = function(){
     $http.get('http://192.168.95.222:9200/bank/account/_search?size=30')
     .then(function(response) {
         $scope.accounts = response.data.hits.hits;
-		console.log($scope.accounts);
+		     $scope.myVariable=response;
+
     });
-}
+};
 	
 	$scope.add = function (){
 	debugger;
@@ -26,18 +20,21 @@ app.controller('getDataController', function($scope, $http) {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                 }
             }
-	$http.post('http://192.168.95.222:9200/bank/account?pretty',data,config)
+	$http.post('http://192.168.95.222:9200/bank/account?pretty', data, config)
    .then(
        function(response){
 		   $scope.account = response.data;
+		   $scope.myVariable=response;
+		   $scope.initFirst();
+
          // success callback
-		  $scope.initFirst();
        }, 
        function(response){
          // failure callback
        }
     );
-	 $scope.initFirst();
 }
 	
 })
+
+

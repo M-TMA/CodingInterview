@@ -56,3 +56,13 @@ margin-top:20px;
 body {
 	background-image:url('https://pixabay.com/static/uploads/photo/2016/01/20/21/56/background-1152459_960_720.jpg');
 }
+
+.table > tbody > tr:hover  {
+background-color:yellow;
+}
+
+
+.table > thead > tr > th, .table > tbody > tr > td {
+text-align:center;
+}
+
