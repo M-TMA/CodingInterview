@@ -1,0 +1,4 @@
+[0629/095730:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[0629/095830:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[0629/101322:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[0629/101933:ERROR:file_io.cc(30)] read: expected 4, observed 0

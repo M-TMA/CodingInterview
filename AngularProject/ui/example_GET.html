@@ -1,24 +1,15 @@
-<!doctype html>
-<html ng-app>
+<html>
 	<head>
 		<title>Hello AngularJS</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+				<script src="../controller/getData.js"></script>
+
 	</head>
 
-	<body>
-	<script>
-		function Hello($scope, $http) {
-		debugger;
-    $http.get('http://192.168.1.9:9200/logstash-2014.02.10/fluentd/AVV5NdQ7JRTST7Y2p1uK?pretty').
-        success(function(data) {
-            $scope.fluentd = data;
-			console.log($scope.greeting);
-        });
-}
-		</script>
-		<div ng-controller="Hello">
-			<p>The ID is {{fluentd._source.action}}</p>
-			<p>The content is {{fluentd._source.user}}</p>
+	<body ng-app = "myApp">
+	
+		<div ng-controller="getDataController">
+			<p> Message is: {{fluentd._source.firstname}}</p>
 		</div>
 	</body>
 </html>

@@ -1,0 +1,7 @@
+Document:
+
+1/ Search all records with size = 50
+curl -XGET http://192.168.95.222:9200/bank/_search?size=50
+
+2/ Search record with value define before
+http://192.168.95.222:9200/bank/account/_search?size=50&q=state:PA
