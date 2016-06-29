@@ -34,11 +34,12 @@ margin-bottom:15px;
 }
 
 .text-muted{
-color:white;
-font-size:12px;
+color:red;
+font-size:11px;
 }
+
 .containForm {
-background-color:#FF6633;
+background-color:#FFFFFF;
 border-radius:10px;
 }
 
@@ -60,10 +61,20 @@ body {
 }
 
 .table > tbody > tr:hover  {
-background-color:yellow;
+background-color:#CCFFFF;
 }
 
 
 .table > thead > tr > th, .table > tbody > tr > td {
 text-align:center;
 }
+
+ #firstname, #lastname, #gender, #age, #address, #employer, #email{
+                -webkit-transition:all linear 0.5s;
+                transition:all linear 0.5s;
+                background: transparent;
+				background-color:#ADFF2F;
+            }
+            #firstname.ng-invalid, #lastname.ng-invalid, #gender.ng-invalid, #age.ng-invalid, #address.ng-invalid, #employer.ng-invalid, #email.ng-invalid {
+                background: #CCCCCC;
+            }

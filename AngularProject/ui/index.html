@@ -14,8 +14,31 @@
     <p></p>
   </div>
 </div>
+<script language="javascript">
+$(document).ready(function(){
+    $("#firstname").keydown(function(){
+		if ($("input").val()!=null){
+		            $("#smFirstName").css("color", "green");
+			$("#smFirstName").css("color", "green");
+		} else {
+		    $("#smFirstName").css("color", "red");
+		}
+    });
+	
+	 $("#firstname").keyup(function(){
+		if ($("input").val()!=null){
+		            $("#smFirstName").css("color", "green");
+			$("#smFirstName").css("color", "green");
+		} else {
+		    $("#smFirstName").css("color", "red");
+		}
+    });
+    
+});
+</script>
 </head>
 <body style="background-color:#FFFFFF" ng-app = "myApp">
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -42,22 +65,22 @@
 <form class = "addForm" >
   <fieldset class="form-group" >
     <h4 for="firstname">First Name</h4>
-    <input type="text" class="form-control" id="firstname" ng-model = "firstname" placeholder="Put First Name...">
-    <small class="text-muted">Please fill the First Name.</small>
+    <input type="text" class="form-control" id="firstname" ng-model = "firstname" placeholder="Put First Name..." required>
+    <small class="text-muted" id = "smFirstName">Please fill the First Name.</small>
   </fieldset>
   <fieldset class="form-group">
     <h4 for="lastname">Last Name</h4>
-    <input type="text" class="form-control" id="lastname" ng-model = "lastname" placeholder="Put last name...">
+    <input type="text" class="form-control" id="lastname" ng-model = "lastname" placeholder="Put last name..." required>
 	    <small class="text-muted">Please fill Last Name.</small>
   </fieldset>
    <fieldset class="form-group">
     <h4 for="age">Age</h4>
-    <input type="text" class="form-control" id="age" ng-model = "age" placeholder="Put your age...">
+    <input type="text" class="form-control" id="age" ng-model = "age" placeholder="Put your age..." required>
 	<small class="text-muted">Please input your age.</small>
   </fieldset>
   <fieldset class="form-group">
     <h4 for="gender">Gender</h4>
-    <select class="form-control" ng-model = "gender" id="gender">
+    <select class="form-control" ng-model = "gender" id="gender" required>
       <option value = "Male" >Male</option>
       <option value = "Female" >Female</option>
     </select>
@@ -65,17 +88,17 @@
   </fieldset>
   <fieldset class="form-group">
     <h4 for="address">Address</h4>
-    <input type="text" class="form-control" id="address" ng-model = "address" placeholder="Put address...">
+    <input type="text" class="form-control" id="address" ng-model = "address" placeholder="Put address..." required>
 		<small class="text-muted">Please input your address.</small>
   </fieldset>
    <fieldset class="form-group">
     <h4 for="employer">Employee - Company</h4>
-    <input type="text" class="form-control" id="employer" ng-model = "employer" placeholder="Put company name...">
+    <input type="text" class="form-control" id="employer" ng-model = "employer" placeholder="Put company name..." required>
 			<small class="text-muted">Please input your company name.</small>
   </fieldset>
    <fieldset class="form-group">
     <h4 for="email">Email</h4>
-    <input type="text" class="form-control" id="email" ng-model = "email" placeholder="Put your email...">
+    <input type="text" class="form-control" id="email" ng-model = "email" placeholder="Put your email..." required>
 				<small class="text-muted">Please input your company email.</small>
   </fieldset>
    <fieldset class="form-group">
@@ -138,5 +161,6 @@
 </tr>
 </tbody>
 </table>
+
 </body>
 </html>

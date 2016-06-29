@@ -18,6 +18,9 @@ app.controller('ProcessDataController', function ($scope,$http){
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                 }
             }
+			if (($scope.firstname || $scope.lastname || $scope.age || $scope.gender || $scope.address || $scope.employer || $scope.email) != null ) {
+			
+			
 	$http.post('http://192.168.95.222:9200/bank/account?pretty', data, config)
    .then(
        function(response){
@@ -30,6 +33,7 @@ app.controller('ProcessDataController', function ($scope,$http){
          // failure callback
        }
     );
+ }
 }
 	
 })
