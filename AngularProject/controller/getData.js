@@ -6,4 +6,11 @@ app.controller('getDataController', function($scope, $http) {
     .then(function(response) {
         $scope.fluentd = response.data;
     });
+}).controller('getAllDataController', function ($scope,$http){
+	debugger;
+    $http.get('http://192.168.95.222:9200/bank/account/_search?size=30')
+    .then(function(response) {
+        $scope.accounts = response.data.hits.hits;
+		console.log($scope.accounts);
+    });
 });

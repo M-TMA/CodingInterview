@@ -11,5 +11,12 @@
 		<div ng-controller="getDataController">
 			<p> Message is: {{fluentd._source.firstname}}</p>
 		</div>
+		
+			<div ng-controller="getAllDataController">
+			
+			 <div ng-repeat="account in accounts" style="border:solid 1px red; margin: 10px">
+                {{account._source.firstname}}
+            </div>
+		</div>
 	</body>
 </html>
