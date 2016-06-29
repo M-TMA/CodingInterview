@@ -1,0 +1,7 @@
+
+1/ Using proxy when can't clone from GIT
+
+git config --global http.proxy http[s]://userName:password@proxyaddress:port
+
+2/ Usign proxy for specified issue in localhost (95.222)
+curl --noproxy 192.168.95.222 'http://192.168.95.222:9200/_cat/indices?pretty'
