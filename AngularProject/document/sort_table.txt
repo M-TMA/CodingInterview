@@ -1,0 +1,26 @@
+http://hello-angularjs.appspot.com/sorttablecolumn
+-------------------------------------------------------------
+
+<table class="table">
+	<tr>
+		<th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Name</a>
+		</th>
+		<th><a href="" ng-click="orderByField='employees'; reverseSort = !reverseSort">Employees</a>
+		</th>
+		<th><a href="" ng-click="orderByField='headoffice'; reverseSort = !reverseSort">Head Office</a>
+		</th>
+		<th>Action
+		</th>
+	</tr>
+	<tr ng-repeat="company in companies  | filter: searchKeyword | orderBy:orderByField:reverseSort">
+		<td>
+		</td>
+		<td>
+		</td>
+		<td>
+		</td>
+		<td>
+		<input type="button" value="Remove" class="btn btn-primary" ng-click="removeRow(company.name)"/>
+		</td>
+	</tr>
+</table>
