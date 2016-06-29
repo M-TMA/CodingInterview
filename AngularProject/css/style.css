@@ -33,8 +33,9 @@ margin-bottom:15px;
 
 }
 
-.text-muted, h4{
+.text-muted{
 color:white;
+font-size:12px;
 }
 .containForm {
 background-color:#FF6633;
@@ -66,4 +67,3 @@ background-color:yellow;
 .table > thead > tr > th, .table > tbody > tr > td {
 text-align:center;
 }
-

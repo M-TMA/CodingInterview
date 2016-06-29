@@ -1,4 +1,3 @@
-// Get 1 Data from RestService
 var app = angular.module('myApp', []);
 app.controller('ProcessDataController', function ($scope,$http){
 	//debugger;
@@ -22,11 +21,10 @@ app.controller('ProcessDataController', function ($scope,$http){
 	$http.post('http://192.168.95.222:9200/bank/account?pretty', data, config)
    .then(
        function(response){
+		   // success callback
 		   $scope.account = response.data;
 		   $scope.myVariable=response;
 		   $scope.initFirst();
-
-         // success callback
        }, 
        function(response){
          // failure callback

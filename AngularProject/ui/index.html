@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/style.css">
   <div class="container">
   <div class="jumbotron">
-	 <h1 style="color:black"><center>Poetry and Literature Production</center></h1>
+	 <h1 style="color:black"><center>Employer Management</center></h1>
     <p></p>
   </div>
 </div>
@@ -23,7 +23,12 @@
     </div>
     <ul class="nav navbar-nav">
       <li id = 'li1' ng-click="add()" ><a href="#">Emp By Age</a></li>
-      <li id = 'li2' ng-click="load('Gender')"><a href="#">Emp By Gender</a></li>
+      <li class="dropdown" id = 'li2' ><a class="dropdown-toggle" data-toggle="dropdown" href="#">Emp By Gender</a>
+	  <ul  class="dropdown-menu">
+	  <li><a href="#">Male</a> </li>
+	  <li><a href="#">Female</a> </li>
+	  </ul>
+	  </li>
       <li id = 'li3' ng-click="load('Address')"><a href="#">Emp By Address</a></li>
 	  <li id = 'li4' ng-click="search('Search')"><a href="#">Search</a></li>
     </ul>
@@ -48,6 +53,7 @@
    <fieldset class="form-group">
     <h4 for="age">Age</h4>
     <input type="text" class="form-control" id="age" ng-model = "age" placeholder="Put your age...">
+	<small class="text-muted">Please input your age.</small>
   </fieldset>
   <fieldset class="form-group">
     <h4 for="gender">Gender</h4>
@@ -60,14 +66,17 @@
   <fieldset class="form-group">
     <h4 for="address">Address</h4>
     <input type="text" class="form-control" id="address" ng-model = "address" placeholder="Put address...">
+		<small class="text-muted">Please input your address.</small>
   </fieldset>
    <fieldset class="form-group">
     <h4 for="employer">Employee - Company</h4>
     <input type="text" class="form-control" id="employer" ng-model = "employer" placeholder="Put company name...">
+			<small class="text-muted">Please input your company name.</small>
   </fieldset>
    <fieldset class="form-group">
     <h4 for="email">Email</h4>
     <input type="text" class="form-control" id="email" ng-model = "email" placeholder="Put your email...">
+				<small class="text-muted">Please input your company email.</small>
   </fieldset>
    <fieldset class="form-group">
     <h4 for="description">Description</h4>
