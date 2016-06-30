@@ -64,17 +64,17 @@ body {
 background-color:#CCFFFF;
 }
 
-
 .table > thead > tr > th, .table > tbody > tr > td {
 text-align:center;
 }
 
- #firstname, #lastname, #gender, #age, #address, #employer, #email{
+ #firstname, #lastname, #gender, #age, #address, #employer, #email, #accountNo{
                 -webkit-transition:all linear 0.5s;
                 transition:all linear 0.5s;
                 background: transparent;
-				background-color:#90EE90;
+				background-color:#green;
             }
-            #firstname.ng-invalid, #lastname.ng-invalid, #gender.ng-invalid, #age.ng-invalid, #address.ng-invalid, #employer.ng-invalid, #email.ng-invalid {
+
+#firstname.ng-invalid, #lastname.ng-invalid, #gender.ng-invalid, #age.ng-invalid, #address.ng-invalid, #employer.ng-invalid, #email.ng-invalid, #accountNo.ng-invalid {
                 background: #CCCCCC;
             }

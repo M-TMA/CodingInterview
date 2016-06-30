@@ -63,6 +63,11 @@ $(document).ready(function(){
 <td style="width:35%;padding-left:105px;padding-right:30px;vertical-align: top">
 <div class = "containForm" >
 <form class = "addForm" >
+ <fieldset class="form-group" >
+    <h4 for="accountNo">First Name</h4>
+    <input type="text" class="form-control" id="accountNo" ng-model = "accountno" placeholder="Put Account NO..." required>
+    <small class="text-muted" id = "smAccountNo">Please fill the Account Number.</small>
+  </fieldset>
   <fieldset class="form-group" >
     <h4 for="firstname">First Name</h4>
     <input type="text" class="form-control" id="firstname" ng-model = "firstname" placeholder="Put First Name..." required>
@@ -116,6 +121,7 @@ $(document).ready(function(){
   <table class="table">
     <thead>
       <tr>    
+	    <th>ANO</th>
         <th>Firstname</th>
         <th>Lastname</th>
         <th>Age</th>
@@ -128,6 +134,7 @@ $(document).ready(function(){
     </thead>
     <tbody>
       <tr ng-repeat="account in accounts">  
+	    <td> {{account._source.account_number}}</td>
         <td> {{account._source.firstname}}</td>
         <td> {{account._source.lastname}}</td>
         <td> {{account._source.age}}</td>
@@ -139,10 +146,10 @@ $(document).ready(function(){
 		<table>
 		<tr>
 		<td>
-		  <center><button  class="btn btn-primary" >Detail</button></center>
+		  <center><button class="btn btn-primary" >Detail</button></center>
 		</td>
 		<td>
-		  <center><button  class="btn btn-failure" >Delete</button></center>
+		  <center><button  ng-click="deleteEmp(account)" class="btn btn-small btn-danger" >Delete</button></center>
 		</td>
 		<td>
 		  <center><button class="btn btn-success" >Update</button></center>

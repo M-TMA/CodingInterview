@@ -2,3 +2,4 @@ Task for 30/6/2016:
 ----------------------------------------------------------------------------
 1/ Using update/delete API with in elastic search and ng-model to update and delete data
 2/ Sort on column header
+3/ Note about structure of database. It really important to use API then.
