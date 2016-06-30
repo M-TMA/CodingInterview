@@ -73,7 +73,7 @@ text-align:center;
                 -webkit-transition:all linear 0.5s;
                 transition:all linear 0.5s;
                 background: transparent;
-				background-color:#ADFF2F;
+				background-color:#90EE90;
             }
             #firstname.ng-invalid, #lastname.ng-invalid, #gender.ng-invalid, #age.ng-invalid, #address.ng-invalid, #employer.ng-invalid, #email.ng-invalid {
                 background: #CCCCCC;
