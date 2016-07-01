@@ -120,7 +120,8 @@ $(document).ready(function(){
   <h2 style="background-color:green;color:white;border-radius:10px"><center>Data List</center></h2>
   <table class="table">
     <thead>
-      <tr>    
+      <tr>   
+	    <th>NO</th>	  
 	    <th>ANO</th>
         <th>Firstname</th>
         <th>Lastname</th>
@@ -132,16 +133,35 @@ $(document).ready(function(){
 		<th>Modify</th>
       </tr>
     </thead>
-    <tbody>
-      <tr ng-repeat="account in accounts">  
-	    <td> {{account._source.account_number}}</td>
-        <td> {{account._source.firstname}}</td>
-        <td> {{account._source.lastname}}</td>
-        <td> {{account._source.age}}</td>
-		<td> {{account._source.gender}}</td>
-        <td> {{account._source.address}}</td>
-        <td> {{account._source.employer}}</td>
-        <td> {{account._source.email}}</td>
+    
+      <tr ng-repeat="account in accounts | orderBy : '_source.account_number'">
+	    <td ng-if="$odd" style="background-color:#f1f1f1"> {{ $index + 1 }}</td>
+	    <td ng-if="$even"> {{ $index + 1 }}</td>
+		
+		<td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.account_number}}</td>
+	    <td ng-if="$even"> {{account._source.account_number}}</td>
+		
+		<td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.firstname}}</td>
+        <td ng-if="$even"> {{account._source.firstname}}</td>
+        
+		<td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.lastname}}</td>
+		<td ng-if="$even"> {{account._source.lastname}}</td>
+        
+		<td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.age}}</td>
+		<td ng-if="$even"> {{account._source.age}}</td>
+		
+		<td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.gender}}</td>
+		<td ng-if="$even"> {{account._source.gender}}</td>
+        
+		<td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.address}}</td>
+		<td ng-if="$even"> {{account._source.address}}</td>
+        
+		<td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.employer}}</td>
+		<td ng-if="$even"> {{account._source.employer}}</td>
+        
+		<td ng-if="$odd" style="background-color:#f1f1f1">{{account._source.email}}</td>
+		<td ng-if="$even"> {{account._source.email}}</td>
+		
 		<td> 
 		<table>
 		<tr>
@@ -152,7 +172,8 @@ $(document).ready(function(){
 		  <center><button  ng-click="deleteEmp(account)" class="btn btn-small btn-danger" >Delete</button></center>
 		</td>
 		<td>
-		  <center><button class="btn btn-success" >Update</button></center>
+		   <center><button id = "upBtn" class="btn btn-success" >Update</button></center>
+
 		</td>
 		
 		
@@ -160,7 +181,7 @@ $(document).ready(function(){
 		</table>
 		</td>
       </tr>
-    </tbody>
+
   </table>
 </div>
 </td>
@@ -168,7 +189,11 @@ $(document).ready(function(){
 </tr>
 </tbody>
 </table>
-
+<script>
+$('#upBtn').click(function(){
+alert('sdsdsd');
+});
+</script>
 
 </body>
 </html>
