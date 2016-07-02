@@ -8,6 +8,7 @@
     <script src="../js/jquery.min.js"></script>
   <script src="../controller/data_controller.js"></script>
     <link rel="stylesheet" href="../css/style.css">
+  
   <div class="container">
   <div class="jumbotron">
 	 <h1 style="color:black"><center>Employer Management</center></h1>
@@ -37,8 +38,7 @@ $(document).ready(function(){
 });
 </script>
 </head>
-<body style="background-color:#FFFFFF" ng-app = "myApp">
-
+<body style="background-color:#FFFFFF" ng-app = "myApp" ng-controller="ProcessDataController">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -57,14 +57,14 @@ $(document).ready(function(){
     </ul>
   </div>
 </nav>
-<table style="width:100%;margin-top:-50px;" ng-controller="ProcessDataController">
+<table style="width:100%;margin-top:-50px;" >
 <tbody>
 <tr>
 <td style="width:35%;padding-left:105px;padding-right:30px;vertical-align: top">
 <div class = "containForm" >
 <form class = "addForm" >
  <fieldset class="form-group" >
-    <h4 for="accountNo">First Name</h4>
+    <h4 for="accountNo">ANO</h4>
     <input type="text" class="form-control" id="accountNo" ng-model = "accountno" placeholder="Put Account NO..." required>
     <small class="text-muted" id = "smAccountNo">Please fill the Account Number.</small>
   </fieldset>
@@ -86,8 +86,8 @@ $(document).ready(function(){
   <fieldset class="form-group">
     <h4 for="gender">Gender</h4>
     <select class="form-control" ng-model = "gender" id="gender" required>
-      <option value = "Male" >Male</option>
-      <option value = "Female" >Female</option>
+      <option value = "M" >Male</option>
+      <option value = "F" >Female</option>
     </select>
 	<small class="text-muted">Please Select Your Gender.</small>
   </fieldset>
@@ -161,27 +161,22 @@ $(document).ready(function(){
         
 		<td ng-if="$odd" style="background-color:#f1f1f1">{{account._source.email}}</td>
 		<td ng-if="$even"> {{account._source.email}}</td>
-		
 		<td> 
 		<table>
 		<tr>
 		<td>
-		  <center><button class="btn btn-primary" >Detail</button></center>
+		  <center><button  class="btn btn-primary" >Detail</button></center>
 		</td>
 		<td>
 		  <center><button  ng-click="deleteEmp(account)" class="btn btn-small btn-danger" >Delete</button></center>
 		</td>
 		<td>
-		   <center><button id = "upBtn" class="btn btn-success" >Update</button></center>
-
+		   <center><button ng-click="editEmployee(account)" class="btn btn-success" >Update</button></center>
 		</td>
-		
-		
 		</tr>
 		</table>
 		</td>
       </tr>
-
   </table>
 </div>
 </td>
@@ -189,11 +184,6 @@ $(document).ready(function(){
 </tr>
 </tbody>
 </table>
-<script>
-$('#upBtn').click(function(){
-alert('sdsdsd');
-});
-</script>
 
 </body>
 </html>

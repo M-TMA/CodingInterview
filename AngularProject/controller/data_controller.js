@@ -1,5 +1,5 @@
 var app = angular.module('myApp', []);
-app.controller('ProcessDataController', function ($scope,$http){
+app.controller('ProcessDataController',['$scope', '$http', function ($scope, $http){
 	//debugger;
 	
 	// GET LIST emp
@@ -11,7 +11,9 @@ app.controller('ProcessDataController', function ($scope,$http){
 };
 	//ADD new emp
 	$scope.add = function (){
-		var newObject = {
+		//debugger;
+		/*var newObject = {
+			"_id":$scope.accountno,
 			 _source : {
 			"account_number":$scope.accountno,
 			"firstname":$scope.firstname,
@@ -25,8 +27,8 @@ app.controller('ProcessDataController', function ($scope,$http){
 		}
 		if (newObject!=null){
 			$scope.accounts.push(newObject);
-		}
-    var jsonData = JSON.stringify({firstname:$scope.firstname,lastname:$scope.lastname,age:$scope.age,gender:$scope.gender,address:$scope.address, employer: $scope.employer, email:$scope.email}, null);
+		} */
+    var jsonData = JSON.stringify({account_number:$scope.accountno,firstname:$scope.firstname,lastname:$scope.lastname,age:$scope.age,gender:$scope.gender,address:$scope.address, employer: $scope.employer, email:$scope.email}, null);
 		// var jsonData = JSON.stringify(newObject);
 		var config = {
                 headers : {
@@ -40,6 +42,7 @@ app.controller('ProcessDataController', function ($scope,$http){
        function(response){
 		   // success callback
 		   $scope.account = response.data;
+		   $scope.initFirst();
        }, 
        function(response){
          // failure callback
@@ -50,7 +53,7 @@ app.controller('ProcessDataController', function ($scope,$http){
 
 // Delete Employer
 $scope.deleteEmp = function (account){
-	
+	//debugger;
 	var config = {
                 headers : {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
@@ -68,8 +71,21 @@ $scope.deleteEmp = function (account){
          // failure call back
        }
     );
-}
-	
-})
+}	
+
+//In case of edit employee, populate form with employee data
+                $scope.editEmployee = function(account) {
+					debugger;
+					$scope.accountno = account._source.account_number;
+                    $scope.firstname = account._source.firstname;
+                    $scope.lastname = account._source.lastname;
+					$scope.age = account._source.age;
+                    $scope.gender = account._source.gender;
+                    $scope.address = account._source.address;
+					$scope.employer = account._source.employer;
+                    $scope.email = account._source.email;
+                };
+
+}])
 
 

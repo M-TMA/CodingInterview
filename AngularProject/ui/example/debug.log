@@ -4,3 +4,6 @@
 [0701/110134:ERROR:file_io.cc(30)] read: expected 4, observed 0
 [0701/111347:ERROR:file_io.cc(30)] read: expected 4, observed 0
 [0701/112336:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[0701/135310:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[0701/140256:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[0701/142153:ERROR:file_io.cc(30)] read: expected 4, observed 0
