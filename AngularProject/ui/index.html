@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/angularjs.min.js"></script>
     <script src="../js/jquery.min.js"></script>
+    <script src="../js/scroll_to_top.js"></script>
+
     <script src="../controller/data_controller.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 
@@ -60,97 +62,94 @@
             </ul>
         </div>
     </nav>
-    <table style="width:100%;margin-top:-50px;">
-        <tbody>
+    <table id="mainTable" class="table">
+        <table id="tableSub1" align="center" class="table">
+            <form class="addForm">
+                <tr style="width:35%;padding-left:105px;padding-right:30px;vertical-align: top">
+                    <td>
+                        <fieldset class="form-group">
+                            <h4 for="accountNo">ANO</h4>
+                            <input type="text" class="form-control" id="accountNo" ng-model="accountno" placeholder="Put Account NO..." required>
+                            <small class="text-muted" id="smAccountNo">Please fill the Account Number.</small>
+                        </fieldset>
+                    </td>
+                    <td>
+                        <fieldset class="form-group">
+                            <h4 for="firstname">First Name</h4>
+                            <input type="text" class="form-control" id="firstname" ng-model="firstname" placeholder="Put First Name..." required>
+                            <small class="text-muted" id="smFirstName">Please fill the First Name.</small>
+                        </fieldset>
+                    </td>
+                    <td>
+                        <fieldset class="form-group">
+                            <h4 for="lastname">Last Name</h4>
+                            <input type="text" class="form-control" id="lastname" ng-model="lastname" placeholder="Put last name..." required>
+                            <small class="text-muted">Please fill Last Name.</small>
+                        </fieldset>
+                    </td>
+                    <td>
+                        <fieldset class="form-group">
+                            <h4 for="age">Age</h4>
+                            <input type="text" class="form-control" id="age" ng-model="age" placeholder="Put your age..." required>
+                            <small class="text-muted">Please input your age.</small>
+                        </fieldset>
+                    </td>
 
-            <div class="containForm">
-                <form class="addForm">
-                    <tr style="width:35%;padding-left:105px;padding-right:30px;vertical-align: top">
-                        <td>
-                            <fieldset class="form-group">
-                                <h4 for="accountNo">ANO</h4>
-                                <input type="text" class="form-control" id="accountNo" ng-model="accountno" placeholder="Put Account NO..." required>
-                                <small class="text-muted" id="smAccountNo">Please fill the Account Number.</small>
-                            </fieldset>
-                        </td>
-                        <td>
-                            <fieldset class="form-group">
-                                <h4 for="firstname">First Name</h4>
-                                <input type="text" class="form-control" id="firstname" ng-model="firstname" placeholder="Put First Name..." required>
-                                <small class="text-muted" id="smFirstName">Please fill the First Name.</small>
-                            </fieldset>
-                        </td>
-                        <td>
-                            <fieldset class="form-group">
-                                <h4 for="lastname">Last Name</h4>
-                                <input type="text" class="form-control" id="lastname" ng-model="lastname" placeholder="Put last name..." required>
-                                <small class="text-muted">Please fill Last Name.</small>
-                            </fieldset>
-                        </td>
-                        <td>
-                            <fieldset class="form-group">
-                                <h4 for="age">Age</h4>
-                                <input type="text" class="form-control" id="age" ng-model="age" placeholder="Put your age..." required>
-                                <small class="text-muted">Please input your age.</small>
-                            </fieldset>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <fieldset class="form-group">
-                                <h4 for="gender">Gender</h4>
-                                <select class="form-control" ng-model="gender" id="gender" required>
-                                    <option value="M">Male</option>
-                                    <option value="F">Female</option>
-                                </select>
-                                <small class="text-muted">Please Select Your Gender.</small>
-                            </fieldset>
-                        </td>
-                        <td>
-                            <fieldset class="form-group">
-                                <h4 for="address">Address</h4>
-                                <input type="text" class="form-control" id="address" ng-model="address" placeholder="Put address..." required>
-                                <small class="text-muted">Please input your address.</small>
-                            </fieldset>
-                        </td>
-                        <td>
-                            <fieldset class="form-group">
-                                <h4 for="employer">Employee - Company</h4>
-                                <input type="text" class="form-control" id="employer" ng-model="employer" placeholder="Put company name..." required>
-                                <small class="text-muted">Please input your company name.</small>
-                            </fieldset>
-                        </td>
-                        <td>
-                            <fieldset class="form-group">
-                                <h4 for="email">Email</h4>
-                                <input type="text" class="form-control" id="email" ng-model="email" placeholder="Put your email..." required>
-                                <small class="text-muted">Please input your company email.</small>
-                            </fieldset>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <fieldset class="form-group">
-                                <h4 for="description">Description</h4>
-                                <textarea class="form-control" rows="4" cols="50" id="description" ng-model="description" placeholder="Write some your description..."> </textarea>
-                            </fieldset>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <center>
-                                <button type="submit" class="btn btn-primary" ng-click="add()">Add New</button>
-                            </center>
-                        </td>
-                    </tr>
-                </form>
-            </div>
-
-
-            <tr style="vertical-align: top;margin-top:10px; padding-right:105px;">
-                <div class="contentTable" ng-init="initFirst()">
-                    <h2 style="background-color:green;color:white;border-radius:10px"><center>Data List</center></h2>
+                </tr>
+                <tr>
+                    <td>
+                        <fieldset class="form-group">
+                            <h4 for="gender">Gender</h4>
+                            <select class="form-control" ng-model="gender" id="gender" required>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                            <small class="text-muted">Please Select Your Gender.</small>
+                        </fieldset>
+                    </td>
+                    <td>
+                        <fieldset class="form-group">
+                            <h4 for="address">Address</h4>
+                            <input type="text" class="form-control" id="address" ng-model="address" placeholder="Put address..." required>
+                            <small class="text-muted">Please input your address.</small>
+                        </fieldset>
+                    </td>
+                    <td>
+                        <fieldset class="form-group">
+                            <h4 for="employer">Employee - Company</h4>
+                            <input type="text" class="form-control" id="employer" ng-model="employer" placeholder="Put company name..." required>
+                            <small class="text-muted">Please input your company name.</small>
+                        </fieldset>
+                    </td>
+                    <td>
+                        <fieldset class="form-group">
+                            <h4 for="email">Email</h4>
+                            <input type="text" class="form-control" id="email" ng-model="email" placeholder="Put your email..." required>
+                            <small class="text-muted">Please input your company email.</small>
+                        </fieldset>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <fieldset class="form-group">
+                            <h4 for="description">Description</h4>
+                            <textarea class="form-control" rows="4" cols="50" id="description" ng-model="description" placeholder="Write some your description..."> </textarea>
+                        </fieldset>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <button type="submit" class="btn btn-primary" ng-click="add()">Add/Update</button>
+                        </center>
+                    </td>
+                </tr>
+            </form>
+        </table>
+        <table class="table">
+            <tr>
+                <div ng-init="initFirst()">
+                    <h2><center>Data List</center></h2>
                     <table class="table">
                         <thead>
                             <tr>
@@ -209,7 +208,7 @@
                                         </td>
                                         <td>
                                             <center>
-                                                <button ng-click="editEmployee(account)" class="btn btn-success">Update</button>
+                                                <button ng-click="editEmployee(account)" id="btnUpdate" class="btn btn-success">Update</button>
                                             </center>
                                         </td>
                                     </tr>
@@ -230,7 +229,7 @@
                                         </td>
                                         <td>
                                             <center>
-                                                <button ng-click="editEmployee(account)" class="btn btn-success">Update</button>
+                                                <button ng-click="editEmployee(account)" id="btnUpdate" class="btn btn-success">Update</button>
                                             </center>
                                         </td>
                                     </tr>
@@ -240,10 +239,11 @@
                     </table>
                 </div>
             </tr>
-
-
-        </tbody>
+        </table>
     </table>
+
+    <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
+
 
 </body>
 
