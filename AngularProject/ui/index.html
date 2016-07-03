@@ -18,29 +18,7 @@
             <p></p>
         </div>
     </div>
-    <script language="javascript">
-        $(document).ready(function() {
-            $("#firstname").keydown(function() {
-                if ($("input").val() != null) {
-                    $("#smFirstName").css("color", "green");
-                    $("#smFirstName").css("color", "green");
-                } else {
-                    $("#smFirstName").css("color", "red");
-                }
-            });
 
-            $("#firstname").keyup(function() {
-                if ($("input").val() != null) {
-                    $("#smFirstName").css("color", "green");
-                    $("#smFirstName").css("color", "green");
-                } else {
-                    $("#smFirstName").css("color", "red");
-                }
-            });
-
-        });
-
-    </script>
 </head>
 
 <body style="background-color:#FFFFFF" ng-app="myApp" ng-controller="ProcessDataController">
@@ -64,35 +42,36 @@
     </nav>
     <table id="mainTable" class="table">
         <table id="tableSub1" align="center" class="table">
-            <form class="addForm">
+            <form class="addForm" name="myForm">
                 <tr style="width:35%;padding-left:105px;padding-right:30px;vertical-align: top">
                     <td>
                         <fieldset class="form-group">
                             <h4 for="accountNo">ANO</h4>
                             <input type="text" class="form-control" id="accountNo" ng-model="accountno" placeholder="Put Account NO..." required>
-                            <small class="text-muted" id="smAccountNo">Please fill the Account Number.</small>
+                            <span ng-show="accountno"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
+                            <small class="text-muted" id="smAccountNo" ng-show="!accountno"><img style = "width=20px;height:20px;" src="../pic/red_x.png">Please fill Your Account Number.</small>
                         </fieldset>
                     </td>
                     <td>
                         <fieldset class="form-group">
                             <h4 for="firstname">First Name</h4>
-                            <input type="text" class="form-control" id="firstname" ng-model="firstname" placeholder="Put First Name..." required>
-                            <small class="text-muted" id="smFirstName">Please fill the First Name.</small>
-                        </fieldset>
+                            <input type="text" class="form-control" id="firstName" ng-model="firstname" placeholder="Put First Name..." required>
+                            <span ng-show="firstname"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
+                            <small class="text-muted" ng-show="!firstname"><img style = "width=20px;height:20px;" src="../pic/red_x.png">Please fill Your First Name.</small> </fieldset>
                     </td>
                     <td>
                         <fieldset class="form-group">
                             <h4 for="lastname">Last Name</h4>
-                            <input type="text" class="form-control" id="lastname" ng-model="lastname" placeholder="Put last name..." required>
-                            <small class="text-muted">Please fill Last Name.</small>
-                        </fieldset>
+                            <input type="text" class="form-control" id="lastName" ng-model="lastname" placeholder="Put last name..." required>
+                            <span ng-show="lastname"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
+                            <small class="text-muted" ng-show="!lastname"><img style = "width=20px;height:20px;" src="../pic/red_x.png">Please fill Your Last Name.</small> </fieldset>
                     </td>
                     <td>
                         <fieldset class="form-group">
                             <h4 for="age">Age</h4>
                             <input type="text" class="form-control" id="age" ng-model="age" placeholder="Put your age..." required>
-                            <small class="text-muted">Please input your age.</small>
-                        </fieldset>
+                            <span ng-show="age"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
+                            <small class="text-muted" ng-show="!age"><img style = "width=20px;height:20px;" src="../pic/red_x.png">Please fill Your Age.</small> </fieldset>
                     </td>
 
                 </tr>
@@ -104,29 +83,29 @@
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
                             </select>
-                            <small class="text-muted">Please Select Your Gender.</small>
-                        </fieldset>
+                            <span ng-show="gender"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
+                            <small class="text-muted" ng-show="!gender"><img style = "width=20px;height:20px;" src="../pic/red_x.png">Please choose Your Gender.</small> </fieldset>
                     </td>
                     <td>
                         <fieldset class="form-group">
                             <h4 for="address">Address</h4>
                             <input type="text" class="form-control" id="address" ng-model="address" placeholder="Put address..." required>
-                            <small class="text-muted">Please input your address.</small>
-                        </fieldset>
+                            <span ng-show="address"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
+                            <small class="text-muted" ng-show="!address">Please fill Your Address.</small> </fieldset>
                     </td>
                     <td>
                         <fieldset class="form-group">
                             <h4 for="employer">Employee - Company</h4>
                             <input type="text" class="form-control" id="employer" ng-model="employer" placeholder="Put company name..." required>
-                            <small class="text-muted">Please input your company name.</small>
-                        </fieldset>
+                            <span ng-show="employer"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
+                            <small class="text-muted" ng-show="!employer"><img style = "width=20px;height:20px;" src="../pic/red_x.png"> Please fill Your Company Name.</small> </fieldset>
                     </td>
                     <td>
                         <fieldset class="form-group">
                             <h4 for="email">Email</h4>
                             <input type="text" class="form-control" id="email" ng-model="email" placeholder="Put your email..." required>
-                            <small class="text-muted">Please input your company email.</small>
-                        </fieldset>
+                            <span ng-show="email"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
+                            <small class="text-muted" ng-show="!email"><img style = "width=20px;height:20px;" src="../pic/red_x.png">Please fill Your Email.</small> </fieldset>
                     </td>
                 </tr>
                 <tr>
@@ -140,17 +119,17 @@
                 <tr>
                     <td colspan="4">
                         <center>
-                            <button type="submit" class="btn btn-primary" ng-click="add()">Add/Update</button>
+                            <input type="submit" class="btn btn-success" ng-click="add()" ng-show="accountno && firstname && lastname && age && gender && address &&  employer && email" value="Add/Update" />
                         </center>
                     </td>
                 </tr>
             </form>
         </table>
-        <table class="table">
+        <table class="table ">
             <tr>
-                <div ng-init="initFirst()">
+                <div ng-init="initFirst() ">
                     <h2><center>Data List</center></h2>
-                    <table class="table">
+                    <table class="table ">
                         <thead>
                             <tr>
                                 <th>NO</th>
@@ -166,70 +145,70 @@
                             </tr>
                         </thead>
 
-                        <tr ng-repeat="account in accounts | orderBy : '_source.account_number'">
-                            <td ng-if="$odd" style="background-color:#f1f1f1"> {{ $index + 1 }}</td>
-                            <td ng-if="$even"> {{ $index + 1 }}</td>
+                        <tr ng-repeat="account in accounts | orderBy : '_source.account_number' ">
+                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{ $index + 1 }}</td>
+                            <td ng-if="$even "> {{ $index + 1 }}</td>
 
-                            <td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.account_number}}</td>
-                            <td ng-if="$even"> {{account._source.account_number}}</td>
+                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.account_number}}</td>
+                            <td ng-if="$even "> {{account._source.account_number}}</td>
 
-                            <td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.firstname}}</td>
-                            <td ng-if="$even"> {{account._source.firstname}}</td>
+                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.firstname}}</td>
+                            <td ng-if="$even "> {{account._source.firstname}}</td>
 
-                            <td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.lastname}}</td>
-                            <td ng-if="$even"> {{account._source.lastname}}</td>
+                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.lastname}}</td>
+                            <td ng-if="$even "> {{account._source.lastname}}</td>
 
-                            <td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.age}}</td>
-                            <td ng-if="$even"> {{account._source.age}}</td>
+                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.age}}</td>
+                            <td ng-if="$even "> {{account._source.age}}</td>
 
-                            <td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.gender}}</td>
-                            <td ng-if="$even"> {{account._source.gender}}</td>
+                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.gender}}</td>
+                            <td ng-if="$even "> {{account._source.gender}}</td>
 
-                            <td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.address}}</td>
-                            <td ng-if="$even"> {{account._source.address}}</td>
+                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.address}}</td>
+                            <td ng-if="$even "> {{account._source.address}}</td>
 
-                            <td ng-if="$odd" style="background-color:#f1f1f1"> {{account._source.employer}}</td>
-                            <td ng-if="$even"> {{account._source.employer}}</td>
+                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.employer}}</td>
+                            <td ng-if="$even "> {{account._source.employer}}</td>
 
-                            <td ng-if="$odd" style="background-color:#f1f1f1">{{account._source.email}}</td>
-                            <td ng-if="$even"> {{account._source.email}}</td>
-                            <td ng-if="$odd" style="background-color:#f1f1f1">
+                            <td ng-if="$odd " style="background-color:#f1f1f1 ">{{account._source.email}}</td>
+                            <td ng-if="$even "> {{account._source.email}}</td>
+                            <td ng-if="$odd " style="background-color:#f1f1f1 ">
                                 <table>
                                     <tr>
                                         <td>
                                             <center>
-                                                <button class="btn btn-primary">Detail</button>
+                                                <button class="btn btn-primary ">Detail</button>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button ng-click="deleteEmp(account)" class="btn btn-small btn-danger">Delete</button>
+                                                <button ng-click="deleteEmp(account) " class="btn btn-small btn-danger ">Delete</button>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button ng-click="editEmployee(account)" id="btnUpdate" class="btn btn-success">Update</button>
+                                                <button ng-click="editEmployee(account) " id="btnUpdate " class="btn btn-success ">Update</button>
                                             </center>
                                         </td>
                                     </tr>
                                 </table>
                             </td>
-                            <td ng-if="$even">
+                            <td ng-if="$even ">
                                 <table>
                                     <tr>
                                         <td>
                                             <center>
-                                                <button class="btn btn-primary">Detail</button>
+                                                <button class="btn btn-primary ">Detail</button>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button ng-click="deleteEmp(account)" class="btn btn-small btn-danger">Delete</button>
+                                                <button ng-click="deleteEmp(account) " class="btn btn-small btn-danger ">Delete</button>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button ng-click="editEmployee(account)" id="btnUpdate" class="btn btn-success">Update</button>
+                                                <button ng-click="editEmployee(account) " id="btnUpdate " class="btn btn-success ">Update</button>
                                             </center>
                                         </td>
                                     </tr>
@@ -242,7 +221,7 @@
         </table>
     </table>
 
-    <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
+    <a href="javascript:void(0); " id="scroll " title="Scroll to Top " style="display: none; ">Top<span></span></a>
 
 
 </body>

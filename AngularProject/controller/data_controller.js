@@ -64,6 +64,12 @@ app.controller('ProcessDataController', ['$scope', '$http', function ($scope, $h
             return false;
         }
 
+        //Check undefined, empty, null, "", exception: Description
+        /*$scope.isExistingObject = function () {
+            return !$.isEmptyObject($scope.accountno) && !$.isEmpty($scope.firstname) && !$.isEmpty($scope.lastname) && !$.isEmpty($scope.age) && !$.isEmpty($scope.address) && !$.isEmpty($scope.gender) && !$.isEmpty($scope.employer) && !$.isEmpty($scope.email);
+        }*/
+
+        //if ($scope.isExistingObject()) {
         if (!$scope.isContainElement(account, $scope.accounts)) {
             $scope.accounts.push(account);
         } else {
@@ -74,27 +80,29 @@ app.controller('ProcessDataController', ['$scope', '$http', function ($scope, $h
                 $scope.accounts.push(account);
             }
         }
+        // }
+
 
         var newUrl = "http://localhost:9200/bank/account/" + $scope.accountno + "?pretty"
         var config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
             }
-        }
-        if (($scope.firstname && $scope.lastname && $scope.age && $scope.gender && $scope.address && $scope.employer && $scope.email) != null) {
+            //   if (!$scope.isExistingObject()) {
 
-            $http.put(newUrl, jsonData, config)
-                .then(
-                    function (response) {
-                        // success callback
-                        $scope.account = response.data;
+        $http.put(newUrl, jsonData, config)
+            .then(
+                function (response) {
+                    // success callback
+                    $scope.account = response.data;
 
-                    },
-                    function (response) {
-                        // failure callback
-                    }
-                );
-        }
+                },
+                function (response) {
+                    // failure callback
+                }
+            );
+        // }
     }
 
     // Delete Employer

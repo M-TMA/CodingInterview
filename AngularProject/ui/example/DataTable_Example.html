@@ -1,21 +1,52 @@
-  <!-- Confirmation Dialog -->
-    <div class="modal" modal="showModal" close="cancel()">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title">Delete confirmation</h4>
-          </div>
-          <div class="modal-body">
-            <p>Are you sure?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">No</button>
-            <button type="button" class="btn btn-primary" ng-click="ok()">Yes</button>
-          </div>
+<head>
+    <title>Employer Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/angularjs.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/scroll_to_top.js"></script>
+
+    <script src="../controller/data_controller.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 style="color:black"><center>Employer Management</center></h1>
+            <p></p>
         </div>
-      </div>
+    </div>
+
+</head>
+
+<body>
+    <!-- Confirmation Dialog -->
+    <div class="modal" modal="showModal" close="cancel()">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Delete confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">No</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">Yes</button>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End of Confirmation Dialog -->
-	
-	
+
+    <form class="form sign-up" name="signUpForm" ng-controller="FormController">
+        <input type="text" name="username" id="username" ng-model="formData.username" required/>
+        <input type="text" name="firstName" id="first-name" ng-model="formData.firstName" required/>
+        <input type="text" name="lastName" id="last-name" ng-model="formData.lastName" required/>
+        <input type="email" name="email" id="email" ng-model="formData.email" required/>
+        <input type="password" name="password" id="password" ng-model="formData.password" required/>
+        <input type="password" name="confirmPassword" id="confirm-password" ng-model="formData.confirmPassword" required/>
+        <input type="submit" id="submit-btn" ng-hide="signUpForm.$invalid" />
+    </form>
+</body>
