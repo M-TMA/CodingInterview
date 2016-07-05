@@ -11,3 +11,9 @@ Task for 30/6/2016:
 2/ Using confirm dialog to prevent user fast click more than 1 time
 3/ http://stackoverflow.com/questions/35782535/cant-click-my-button-inside-ng-repeat-using-jquery
 4/ Not allow to create function function method's name same method in library
+
+
+5/7/2016
+---------------------------
+1/ Refer this article to add proxy to your Bracket App. This can resolve install new extension in third party 
+http://www.sacah.net/2013/05/hacking-proxy-support-into-brackets.html
