@@ -1,5 +1,5 @@
 var app = angular.module('myApp', []);
-app.controller('ProcessDataController', ['$scope', '$http', function ($scope, $http) {
+app.controller('ProcessDataController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
     //debugger;
     // GET LIST emp
     $scope.initFirst = function () {
@@ -22,7 +22,8 @@ app.controller('ProcessDataController', ['$scope', '$http', function ($scope, $h
                 gender: $scope.gender,
                 address: $scope.address,
                 employer: $scope.employer,
-                email: $scope.email
+                email: $scope.email,
+                description: $scope.description
             }
 
         }
@@ -35,7 +36,9 @@ app.controller('ProcessDataController', ['$scope', '$http', function ($scope, $h
             gender: $scope.gender,
             address: $scope.address,
             employer: $scope.employer,
-            email: $scope.email
+            email: $scope.email,
+            description: $scope.description
+
         }, null);
 
         var accountList = $scope.accounts;
@@ -139,6 +142,19 @@ app.controller('ProcessDataController', ['$scope', '$http', function ($scope, $h
         $scope.address = account._source.address;
         $scope.employer = account._source.employer;
         $scope.email = account._source.email;
+        $scope.description = account._source.description;
+
     };
 
+    // get Detail Employer
+    $scope.getDetailFromId = function (account) {
+        debugger;
+        $scope.show = true;
+        $scope.des = "";
+        $scope.des = account._source.description;
+        //$timeout(3000);
+
+        // $scope.show = false;
+        //$scope.des = "";
+    }
 }])

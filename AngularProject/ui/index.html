@@ -11,6 +11,8 @@
 
     <script src="../controller/data_controller.js"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+
 
     <div class="container">
         <div class="jumbotron">
@@ -146,38 +148,38 @@
                         </thead>
 
                         <tr ng-repeat="account in accounts | orderBy : '_source.account_number' ">
-                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{ $index + 1 }}</td>
-                            <td ng-if="$even "> {{ $index + 1 }}</td>
+                            <td ng-if="$odd" style="background-color:#f1f1f1 "> {{ $index + 1 }}</td>
+                            <td ng-if="$even"> {{ $index + 1 }}</td>
 
-                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.account_number}}</td>
-                            <td ng-if="$even "> {{account._source.account_number}}</td>
+                            <td ng-if="$odd" style="background-color:#f1f1f1 "> {{account._source.account_number}}</td>
+                            <td ng-if="$even"> {{account._source.account_number}}</td>
 
-                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.firstname}}</td>
-                            <td ng-if="$even "> {{account._source.firstname}}</td>
+                            <td ng-if="$odd" style="background-color:#f1f1f1 "> {{account._source.firstname}}</td>
+                            <td ng-if="$even"> {{account._source.firstname}}</td>
 
-                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.lastname}}</td>
-                            <td ng-if="$even "> {{account._source.lastname}}</td>
+                            <td ng-if="$odd" style="background-color:#f1f1f1 "> {{account._source.lastname}}</td>
+                            <td ng-if="$even"> {{account._source.lastname}}</td>
 
-                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.age}}</td>
-                            <td ng-if="$even "> {{account._source.age}}</td>
+                            <td ng-if="$odd" style="background-color:#f1f1f1 "> {{account._source.age}}</td>
+                            <td ng-if="$even"> {{account._source.age}}</td>
 
-                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.gender}}</td>
-                            <td ng-if="$even "> {{account._source.gender}}</td>
+                            <td ng-if="$odd" style="background-color:#f1f1f1 "> {{account._source.gender}}</td>
+                            <td ng-if="$even"> {{account._source.gender}}</td>
 
-                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.address}}</td>
-                            <td ng-if="$even "> {{account._source.address}}</td>
+                            <td ng-if="$odd" style="background-color:#f1f1f1 "> {{account._source.address}}</td>
+                            <td ng-if="$even"> {{account._source.address}}</td>
 
-                            <td ng-if="$odd " style="background-color:#f1f1f1 "> {{account._source.employer}}</td>
-                            <td ng-if="$even "> {{account._source.employer}}</td>
+                            <td ng-if="$odd" style="background-color:#f1f1f1 "> {{account._source.employer}}</td>
+                            <td ng-if="$even"> {{account._source.employer}}</td>
 
-                            <td ng-if="$odd " style="background-color:#f1f1f1 ">{{account._source.email}}</td>
-                            <td ng-if="$even "> {{account._source.email}}</td>
-                            <td ng-if="$odd " style="background-color:#f1f1f1 ">
+                            <td ng-if="$odd" style="background-color:#f1f1f1 ">{{account._source.email}}</td>
+                            <td ng-if="$even"> {{account._source.email}}</td>
+                            <td ng-if="$odd" style="background-color:#f1f1f1 ">
                                 <table>
                                     <tr>
                                         <td>
                                             <center>
-                                                <button class="btn btn-primary ">Detail</button>
+                                                <button class="btn btn-primary " ng-click="getDetailFromId(account)" ng-model="show">Detail</button>
                                             </center>
                                         </td>
                                         <td>
@@ -193,12 +195,12 @@
                                     </tr>
                                 </table>
                             </td>
-                            <td ng-if="$even ">
+                            <td ng-if="$even">
                                 <table>
                                     <tr>
                                         <td>
                                             <center>
-                                                <button class="btn btn-primary ">Detail</button>
+                                                <button class="btn btn-primary " ng-click="getDetailFromId(account)" ng-model="show">Detail</button>
                                             </center>
                                         </td>
                                         <td>
@@ -222,6 +224,7 @@
     </table>
 
     <a href="javascript:void(0); " id="scroll" title="Scroll to Top " style="display: none; ">Top<span></span></a>
+    <div id="descript" ng-show="show">Description: {{des}}</div>
 
 
 </body>
