@@ -11,3 +11,8 @@ Task for 30/6/2016:
 2/ Using confirm dialog to prevent user fast click more than 1 time
 3/ http://stackoverflow.com/questions/35782535/cant-click-my-button-inside-ng-repeat-using-jquery
 4/ Not allow to create function function method's name same method in library
+
+4/7/2016 
+--------------------------
+5/ http://www.hongkiat.com/blog/css-code-generator-web-apps/
+6/ http://plnkr.co/edit/yVIJoZ?p=preview
