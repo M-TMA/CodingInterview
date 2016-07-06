@@ -44,7 +44,7 @@
         <table id="tableSub1" align="center" class="table">
             <form class="addForm" name="myForm">
                 <tr style="width:35%;padding-left:105px;padding-right:30px;vertical-align: top">
-                    <td>
+                    <td class="col-xs-1">
                         <fieldset class="form-group">
                             <h4 for="accountNo">ANO</h4>
                             <input type="text" class="form-control" id="accountNo" ng-model="accountno" placeholder="Put Account NO..." required>
@@ -86,14 +86,14 @@
                             <span ng-show="gender"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
                             <small class="text-muted" ng-show="!gender"><img style = "width=20px;height:20px;" src="../pic/red_x.png">Please choose Your Gender.</small> </fieldset>
                     </td>
-                    <td>
+                    <td class="col-xs-4">
                         <fieldset class="form-group">
                             <h4 for="address">Address</h4>
                             <input type="text" class="form-control" id="address" ng-model="address" placeholder="Put address..." required>
                             <span ng-show="address"><img style = "width=20px;height:20px;" src="../pic/green_check.png">OK</span>
                             <small class="text-muted" ng-show="!address"><img style = "width=20px;height:20px;" src="../pic/red_x.png">Please fill Your Address.</small> </fieldset>
                     </td>
-                    <td>
+                    <td class="col-xs-4">
                         <fieldset class="form-group">
                             <h4 for="employer">Employee - Company</h4>
                             <input type="text" class="form-control" id="employer" ng-model="employer" placeholder="Put company name..." required>
