@@ -12,12 +12,11 @@ Task for 30/6/2016:
 3/ http://stackoverflow.com/questions/35782535/cant-click-my-button-inside-ng-repeat-using-jquery
 4/ Not allow to create function function method's name same method in library
 
-<<<<<<< HEAD
 4/7/2016 
 --------------------------
 5/ http://www.hongkiat.com/blog/css-code-generator-web-apps/
 6/ http://plnkr.co/edit/yVIJoZ?p=preview
-=======
+
 
 5/7/2016
 ---------------------------
@@ -36,4 +35,3 @@ http://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2015/06/11/u
 
 4/ Comparison between Directive definition and Component definition
 https://docs.angularjs.org/guide/component
->>>>>>> 623a0bbe7718d056b29bea0f246433be09be7c8c
