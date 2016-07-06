@@ -17,3 +17,16 @@ Task for 30/6/2016:
 ---------------------------
 1/ Refer this article to add proxy to your Bracket App. This can resolve install new extension in third party 
 http://www.sacah.net/2013/05/hacking-proxy-support-into-brackets.html
+
+6/7/2016
+----------------------------
+1/ This mapping data from Directive to Controller in AngularJS
+http://jsfiddle.net/maxisam/QrCXh/ 
+
+2/ Creating dialog using ngDialog / (1/)/ or modal in Controller
+
+3/ How to use scope and pass data between Directive and Controller
+http://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2015/06/11/understanding-scopes-in-angularjs-custom-directives.aspx
+
+4/ Comparison between Directive definition and Component definition
+https://docs.angularjs.org/guide/component

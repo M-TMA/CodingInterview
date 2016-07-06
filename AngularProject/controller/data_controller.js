@@ -3,7 +3,7 @@ app.controller('ProcessDataController', ['$scope', '$http', function ($scope, $h
     //debugger;
     // GET LIST emp
     $scope.initFirst = function () {
-        $http.get('http://192.168.95.222:9200/bank/account/_search?size=40')
+        $http.get('http://192.168.95.222:9200/bank/account/_search?size=20')
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
             });
