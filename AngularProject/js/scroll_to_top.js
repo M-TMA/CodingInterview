@@ -16,9 +16,9 @@ $(document).ready(function () {
     $(document).on("click", "#btnUpdate", function () {
         //console.log("clicked");
         $("html, body").animate({
-            scrollTop: 130
+            scrollTop: 190
         }, 600);
-        $("#tableSub1").addClass("addScroll", 1000, "easeOutBounce");
+        $("#tableSub1").addClass("addScroll", 3000, "easeOutBounce");
         return false;
     });
 });

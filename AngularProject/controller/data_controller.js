@@ -152,9 +152,10 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', function
         $scope.show = true;
         $scope.des = "";
         $scope.des = account._source.description;
-        //$timeout(3000);
-
-        // $scope.show = false;
-        //$scope.des = "";
+        // Sleep 3s and hide description
+        $timeout(function () {
+            $scope.show = false;
+            $scope.des = "";
+        }, 3000);
     }
 }])
