@@ -35,3 +35,7 @@ http://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2015/06/11/u
 
 4/ Comparison between Directive definition and Component definition
 https://docs.angularjs.org/guide/component
+
+15/7/2016
+-----------------------------
+1/ Cheat Sheet (Important): https://www.cheatography.com/proloser/cheat-sheets/angularjs/
