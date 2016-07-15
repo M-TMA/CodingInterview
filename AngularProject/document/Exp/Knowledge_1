@@ -1,0 +1,11 @@
+1/ $index is a way to show which iteration of a loop you’re in. If we set up an ng-repeat to repeat over the letters in ‘somewords’, like so:
+
+<div ng-app="app">
+  <div ng-repeat="item in 'somewords'.split('')">
+    {{$index + 1}}. {{item}}
+  </div>
+</div>
+
+Implement Doc: https://thinkster.io/egghead/index-event-log
+
+2/

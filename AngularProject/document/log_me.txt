@@ -38,4 +38,13 @@ https://docs.angularjs.org/guide/component
 
 15/7/2016
 -----------------------------
-1/ Cheat Sheet (Important): https://www.cheatography.com/proloser/cheat-sheets/angularjs/
+1/ Cheat Sheet (Important): 
++ ANGULAR JS CHEAT SHEET -> https://www.cheatography.com/proloser/cheat-sheets/angularjs/
++ LINK FULL 4 pages PDF format-> https://www.cheatography.com/proloser/cheat-sheets/angularjs/pdf/
++ JQUERY CHEAT SHEET -> https://oscarotero.com/jquery/
+
+
+2/ WEB PAGE similar to CodeAcademy: 
+http://campus.codeschool.com/courses/shaping-up-with-angular-js/level/1/section/1/creating-a-store-module
+
+3/ CREATE DIALOG USING MODAL SERVICE -> http://jsfiddle.net/tnhminh/n5539523/
