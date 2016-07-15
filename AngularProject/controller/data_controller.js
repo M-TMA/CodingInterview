@@ -3,7 +3,7 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', function
     //debugger;
     // GET LIST emp
     $scope.initFirst = function () {
-        $http.get('http://localhost:9200/bank/account/_search?size=20')
+        $http.get('http://192.168.95.222:9200/bank/account/_search?size=20')
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
             });
@@ -86,7 +86,7 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', function
         // }
 
 
-        var newUrl = "http://localhost:9200/bank/account/" + $scope.accountno + "?pretty"
+        var newUrl = "http://192.168.95.222:9200/bank/account/" + $scope.accountno + "?pretty"
         var config = {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
@@ -119,7 +119,7 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', function
             // success callback
         var index = $scope.accounts.indexOf(account);
         $scope.accounts.splice(index, 1);
-        var urlDel = "http://localhost:9200/bank/account/" + account._source.account_number + "?pretty";
+        var urlDel = "http://192.168.95.222:9200/bank/account/" + account._source.account_number + "?pretty";
         $http.delete(urlDel, config)
             .then(
                 function (response) {
