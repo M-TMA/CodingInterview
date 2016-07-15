@@ -4,11 +4,25 @@
     <title>Employer Management</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <script src="../js/angularjs.min.js"></script>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/scroll_to_top.js"></script>
 
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.9/angular.min.js"></script>
+    <script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
+
+    <!--
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://code.angularjs.org/1.4.9/angular.min.js"></script>
+
+    <<script src="../js/angularjs.min.js"></script>>
+    <script src="../js/jquery.min.js"></script>
+    -->
+    <script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
+
+    <script src="../js/scroll_to_top.js"></script>
     <script src="../controller/data_controller.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
@@ -30,11 +44,11 @@
                 <a class="navbar-brand" href="#">Choosen Load</a>
             </div>
             <ul class="nav navbar-nav">
-                <li id='li1' ng-click="add()"><a href="#">Emp By Age</a></li>
+                <li id='li1' ng-click="openAgeSearchDialog()"><a href="#">Emp By Age</a></li>
                 <li class="dropdown" id='li2'><a class="dropdown-toggle" data-toggle="dropdown" href="#">Emp By Gender</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Male</a> </li>
-                        <li><a href="#">Female</a> </li>
+                        <li ng-click="genderSearch('M')"><a href="">Male</a> </li>
+                        <li ng-click="genderSearch('F')"><a href="">Female</a> </li>
                     </ul>
                 </li>
                 <li id='li3' ng-click="load('Address')"><a href="#">Emp By Address</a></li>
@@ -226,6 +240,29 @@
     <a href="javascript:void(0); " id="scroll" title="Scroll to Top " style="display: none; ">Top<span></span></a>
     <div id="descript" ng-show="show">Description:{{des}}</div>
 
+
+    <script type="text/ng-template" id="modal.html">
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" ng-click="Cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Age Search</h4> </div>
+                    <div class="modal-body">
+                        <p>Please input Age that you want to search</p>
+                        <input class="form-control" type="text" id="inputName" placeholder="Age ?" ng-model="age" required> </div>
+                    <select class="form-control" ng-model="ageList" id="gender" ng-repeat="" required>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="No()" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="button" ng-click="Yes()" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
 
 </body>
 

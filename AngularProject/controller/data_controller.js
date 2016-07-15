@@ -1,5 +1,5 @@
-var app = angular.module('myApp', []);
-app.controller('ProcessDataController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+var app = angular.module('myApp', ['angularModalService']);
+app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalService', function ($scope, $http, $timeout, ModalService) {
     //debugger;
     // GET LIST emp
     $scope.initFirst = function () {
@@ -146,6 +146,8 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', function
 
     };
 
+    // $scope.ageSearch = 0;
+
     // get Detail Employer
     $scope.getDetailFromId = function (account) {
         debugger;
@@ -158,4 +160,56 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', function
             $scope.des = "";
         }, 3000);
     }
+
+    $scope.ageSearch = function (age) {
+        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=age:" + age;
+        $http.get(searchAgeUrl)
+            .then(function (response) {
+                $scope.accounts = response.data.hits.hits;
+            }, function (failure) {
+                alert("Can't found emp with " + age + " years old");
+            });
+    };
+
+    $scope.openAgeSearchDialog = function () {
+        ModalService.showModal({
+            templateUrl: 'modal.html',
+            controller: "ModalController"
+        }).then(function (modal) {
+            modal.element.modal(); // open modal dialog
+            modal.close.then(function (result) {
+                if (result > 0 && result < 120) {
+                    $scope.ageSearch(result);
+                }
+            });
+        });
+    };
+
+    $scope.genderSearch = function (gender) {
+        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=gender:" + gender;
+        $http.get(searchAgeUrl)
+            .then(function (response) {
+                $scope.accounts = response.data.hits.hits;
+            }, function (failure) {
+                alert("Can't found emp with gender is " + gender);
+            });
+    };
 }])
+
+app.controller('ModalController', function ($scope, close) {
+    //debugger;
+    $scope.Yes = function () {
+        result = parseInt($scope.age);
+        close(result, 500); // close, but give 500ms for bootstrap to animate
+    };
+
+    $scope.No = function () {
+        result = "You choose NO, please try again"
+        close(result, 500); // close, but give 500ms for bootstrap to animate
+    };
+
+    $scope.Cancel = function () {
+        result = "You can't type input";
+        close(result, 500); // close, but give 500ms for bootstrap to animate
+    };
+});
