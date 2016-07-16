@@ -8,6 +8,8 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         $http.get('http://localhost:9200/bank/account/_search?size=20')
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
+            }, function (failure) {
+                alert('Please check ' + failure);
             });
     };
 

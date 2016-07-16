@@ -1,5 +1,6 @@
 app.controller('SearchModalController', ['$scope', 'close', '$http', function ($scope, close, $http) {
     //debugger;
+
     $scope.Yes = function () {
         result = parseInt($scope.ageSelected);
         close(result, 500); // close, but give 500ms for bootstrap to animate
