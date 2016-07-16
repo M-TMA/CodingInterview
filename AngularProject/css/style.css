@@ -35,6 +35,9 @@
     background-color: lightyellow;
     border: red solid;
 }
+.addBackground {
+    background-color: chartreuse;
+}
 .text-muted {
     color: red;
 }

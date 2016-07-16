@@ -1,4 +1,6 @@
 var app = angular.module('myApp', ['angularModalService']);
+
+
 app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalService', function ($scope, $http, $timeout, ModalService) {
     //debugger;
     // GET LIST emp
@@ -93,7 +95,7 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalSe
                 }
             }
             //   if (!$scope.isExistingObject()) {
-
+        debugger;
         $http.put(newUrl, jsonData, config)
             .then(
                 function (response) {
@@ -171,6 +173,19 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalSe
             });
     };
 
+
+
+    $scope.genderSearch = function (gender) {
+        var searchAgeUrl = "http://localhost:9200/bank/account/_search?size=20&q=gender:" + gender;
+        $http.get(searchAgeUrl)
+            .then(function (response) {
+                $scope.accounts = response.data.hits.hits;
+            }, function (failure) {
+                alert("Can't found emp with gender is " + gender);
+            });
+    };
+
+    // Open modal dialog
     $scope.openAgeSearchDialog = function () {
         ModalService.showModal({
             templateUrl: 'modal.html',
@@ -184,22 +199,12 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalSe
             });
         });
     };
-
-    $scope.genderSearch = function (gender) {
-        var searchAgeUrl = "http://localhost:9200/bank/account/_search?size=20&q=gender:" + gender;
-        $http.get(searchAgeUrl)
-            .then(function (response) {
-                $scope.accounts = response.data.hits.hits;
-            }, function (failure) {
-                alert("Can't found emp with gender is " + gender);
-            });
-    };
 }])
 
-app.controller('ModalController', function ($scope, close) {
+app.controller('ModalController', ['$scope', 'close', '$http', function ($scope, close, $http) {
     //debugger;
     $scope.Yes = function () {
-        result = parseInt($scope.age);
+        result = parseInt($scope.ageSelected);
         close(result, 500); // close, but give 500ms for bootstrap to animate
     };
 
@@ -212,4 +217,30 @@ app.controller('ModalController', function ($scope, close) {
         result = "You can't type input";
         close(result, 500); // close, but give 500ms for bootstrap to animate
     };
-});
+
+    $scope.ageArr = [];
+
+
+    $scope.groupByAge = function () {
+        debugger;
+        var ageGroupByData = {
+            "size": 0,
+            "aggs": {
+                "group_by_age": {
+                    "terms": {
+                        "field": "age"
+                    }
+                }
+            }
+        }
+        var loadAgeUrl = "http://localhost:9200/bank/account/_search?pretty";
+        $http.post(loadAgeUrl, ageGroupByData)
+            .then(function (response) {
+                $scope.ageArr = response.data.aggregations.group_by_age.buckets;
+                $scope.ageArr.splice(0, 1);
+            }, function (failure) {
+                alert("Can't found emp with gender is " + gender);
+            });
+    };
+    $scope.groupByAge();
+}]);

@@ -21,4 +21,31 @@ $(document).ready(function () {
         $("#tableSub1").addClass("addScroll", 3000, "easeOutBounce");
         return false;
     });
+
+    $(document).on("click", "#btnYesSearchAge", function () {
+        console.log("clicked");
+        $("html, body").animate({
+            scrollTop: 800
+        }, 600);
+        $("#tableResult").addClass("addBackground", 3000, "easeOutBounce");
+        return false;
+    });
+
+    $(document).on("click", "#maleBtn", function () {
+        console.log("clicked");
+        $("html, body").animate({
+            scrollTop: 800
+        }, 600);
+        $("#tableResult").addClass("addBackground", 3000, "easeOutBounce");
+        return false;
+    });
+
+    $(document).on("click", "#femaleBtn", function () {
+        console.log("clicked");
+        $("html, body").animate({
+            scrollTop: 800
+        }, 600);
+        $("#tableResult").addClass("addBackground", 3000, "easeOutBounce");
+        return false;
+    });
 });
