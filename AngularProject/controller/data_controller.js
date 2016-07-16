@@ -3,7 +3,7 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalSe
     //debugger;
     // GET LIST emp
     $scope.initFirst = function () {
-        $http.get('http://192.168.95.222:9200/bank/account/_search?size=20')
+        $http.get('http://localhost:9200/bank/account/_search?size=20')
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
             });
@@ -86,7 +86,7 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalSe
         // }
 
 
-        var newUrl = "http://192.168.95.222:9200/bank/account/" + $scope.accountno + "?pretty"
+        var newUrl = "http://localhost:9200/bank/account/" + $scope.accountno + "?pretty"
         var config = {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
@@ -119,7 +119,7 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalSe
             // success callback
         var index = $scope.accounts.indexOf(account);
         $scope.accounts.splice(index, 1);
-        var urlDel = "http://192.168.95.222:9200/bank/account/" + account._source.account_number + "?pretty";
+        var urlDel = "http://localhost:9200/bank/account/" + account._source.account_number + "?pretty";
         $http.delete(urlDel, config)
             .then(
                 function (response) {
@@ -162,7 +162,7 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalSe
     }
 
     $scope.ageSearch = function (age) {
-        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=age:" + age;
+        var searchAgeUrl = "http://localhost:9200/bank/account/_search?size=20&q=age:" + age;
         $http.get(searchAgeUrl)
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
@@ -186,7 +186,7 @@ app.controller('ProcessDataController', ['$scope', '$http', '$timeout', 'ModalSe
     };
 
     $scope.genderSearch = function (gender) {
-        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=gender:" + gender;
+        var searchAgeUrl = "http://localhost:9200/bank/account/_search?size=20&q=gender:" + gender;
         $http.get(searchAgeUrl)
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
