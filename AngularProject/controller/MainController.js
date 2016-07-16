@@ -36,7 +36,48 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
 
 
 
-    // $scope.ageSearch = 0;
+
+
+    $scope.checkBeforePushToArray = function (account) {
+        var accountList = $scope.accounts;
+        $scope.isContainElement = function (account, accountList) {
+            for (var i = 0; i < accountList.length; i++) {
+                if (accountList[i]._source.account_number == account._source.account_number) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        $scope.retrieveOldAccount = function (account, accountList) {
+            for (var i = 0; i < accountList.length; i++) {
+                if (accountList[i]._source.account_number == account._source.account_number) {
+                    return accountList[i];
+                }
+            }
+            return "";
+        }
+
+        $scope.isUpdate = function (accountOld, accountNew) {
+            if (accountNew._source.firstname != accountOld._source.firstname || accountNew._source.lastname != accountOld._source.lastname || accountNew._source.age != accountOld._source.age || accountNew._source.gender != accountOld._source.gender || accountNew._source.address != accountOld._source.address || accountNew._source.employer != accountOld._source.employer || accountNew._source.email != accountOld._source.email) {
+                return true;
+            }
+            return false;
+        }
+
+        if (!$scope.isContainElement(account, $scope.accounts)) {
+            $scope.accounts.push(account);
+        } else {
+            var oldAccount = $scope.retrieveOldAccount(account, $scope.accounts);
+            if ($scope.isUpdate(oldAccount, account)) {
+                var index = $scope.accounts.indexOf(oldAccount);
+                $scope.accounts.splice(index, 1);
+                $scope.accounts.push(account);
+            }
+        }
+
+    }
+
 
     // get Detail Employer
     $scope.getDetailFromId = function (account) {
@@ -73,7 +114,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
             });
     };
 
-    // Open modal dialog
+    // Open Age Search Dialog
     $scope.openAgeSearchDialog = function () {
         ModalService.showModal({
             templateUrl: 'modal.html',
@@ -99,7 +140,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         }).then(function (modal) {
             modal.element.modal(); // open modal dialog
             modal.close.then(function (result) {
-                //$scope.ageSearch(result);
+                $scope.checkBeforePushToArray(result);
             });
         });
     };
@@ -109,15 +150,14 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         ModalService.showModal({
             templateUrl: 'addEmp.html',
             controller: "AddModalController",
-            //account: account,
             inputs: {
                 item: account
             }
         }).then(function (modal) {
             modal.element.modal(); // open modal dialog
             modal.close.then(function (result) {
-                //$scope.ageSearch(result);
+                $scope.checkBeforePushToArray(result);
             });
         });
     };
-}])
+}]);
