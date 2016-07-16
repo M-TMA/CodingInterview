@@ -1,4 +1,4 @@
-app.controller('ModalController', ['$scope', 'close', '$http', function ($scope, close, $http) {
+app.controller('SearchModalController', ['$scope', 'close', '$http', function ($scope, close, $http) {
     //debugger;
     $scope.Yes = function () {
         result = parseInt($scope.ageSelected);

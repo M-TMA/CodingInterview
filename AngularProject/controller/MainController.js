@@ -77,7 +77,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
     $scope.openAgeSearchDialog = function () {
         ModalService.showModal({
             templateUrl: 'modal.html',
-            controller: "ModalController"
+            controller: "SearchModalController"
         }).then(function (modal) {
             modal.element.modal(); // open modal dialog
             modal.close.then(function (result) {
@@ -92,7 +92,10 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
     $scope.openAddEmpDialog = function () {
         ModalService.showModal({
             templateUrl: 'addEmp.html',
-            controller: "AddController"
+            controller: "AddModalController",
+            inputs: {
+                item: ""
+            }
         }).then(function (modal) {
             modal.element.modal(); // open modal dialog
             modal.close.then(function (result) {
@@ -105,12 +108,10 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
     $scope.openUpdateEmpDialog = function (account) {
         ModalService.showModal({
             templateUrl: 'addEmp.html',
-            controller: "AddController",
-            account: account,
-            resolve: {
-                item: function () {
-                    return account;
-                }
+            controller: "AddModalController",
+            //account: account,
+            inputs: {
+                item: account
             }
         }).then(function (modal) {
             modal.element.modal(); // open modal dialog

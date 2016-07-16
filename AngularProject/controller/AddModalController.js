@@ -1,21 +1,22 @@
-app.controller('AddController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout, item) {
+app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', function ($scope, $http, $timeout, item) {
     "use strict"
     debugger;
-    console.log(item);
     //In case of edit employee, populate form with employee data
-    $scope.editEmployee = function (account) {
+    $scope.editEmployee = function (item) {
         //debugger;
-        $scope.accountno = account._source.account_number;
-        $scope.firstname = account._source.firstname;
-        $scope.lastname = account._source.lastname;
-        $scope.age = account._source.age;
-        $scope.gender = account._source.gender;
-        $scope.address = account._source.address;
-        $scope.employer = account._source.employer;
-        $scope.email = account._source.email;
-        $scope.description = account._source.description;
+        $scope.accountno = item._source.account_number;
+        $scope.firstname = item._source.firstname;
+        $scope.lastname = item._source.lastname;
+        $scope.age = item._source.age;
+        $scope.gender = item._source.gender;
+        $scope.address = item._source.address;
+        $scope.employer = item._source.employer;
+        $scope.email = item._source.email;
+        $scope.description = item._source.description;
     };
-
+    if (item != "") {
+        $scope.editEmployee(item);
+    }
     //debugger;
     // GET LIST emp
     $scope.initFirst = function () {
@@ -111,13 +112,12 @@ app.controller('AddController', ['$scope', '$http', '$timeout', function ($scope
                 }
             }
             //   if (!$scope.isExistingObject()) {
-        debugger;
+            // debugger;
         $http.put(newUrl, jsonData, config)
             .then(
                 function (response) {
                     // success callback
                     $scope.account = response.data;
-
                 },
                 function (response) {
                     // failure callback
