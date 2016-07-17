@@ -1,6 +1,4 @@
 var app = angular.module('myApp', ['angularModalService']);
-
-
 app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService', function ($scope, $http, $timeout, ModalService) {
     //debugger;
     // GET LIST emp
@@ -9,7 +7,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
             }, function (failure) {
-                alert('Please check ' + failure);
+                alert('Please check CORS to ensure it was be enabled !!!');
             });
     };
 
