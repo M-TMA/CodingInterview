@@ -2,7 +2,7 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
     "use strict";
 
     //In case of edit employee, populate form with employee data
-    $scope.editEmployee = function (item) {
+    var editEmployee = function (item) {
         //debugger;
         $scope.accountno = item._source.account_number;
         $scope.firstname = item._source.firstname;
@@ -15,7 +15,7 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
         $scope.description = item._source.description;
     };
     if (item != "") {
-        $scope.editEmployee(item);
+        editEmployee(item);
     }
     //debugger;
     // GET LIST emp
@@ -58,10 +58,6 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
             description: $scope.description
 
         }, null);
-
-
-
-
 
         var newUrl = "http://192.168.95.222:9200/bank/account/" + $scope.accountno + "?pretty";
         var config = {

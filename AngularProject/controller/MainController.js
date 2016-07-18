@@ -1,11 +1,11 @@
 var app = angular.module('myApp', ['angularModalService']);
 app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService', 'EmpService', function ($scope, $http, $timeout, ModalService, EmpService) {
-    debugger;
+
 
     // GET LIST emp with size default
     $scope.initFirst = function (size) {
         EmpService.initDatas(size).success(function (response) {
-            $scope.accounts = response.hits.hits;;
+            $scope.accounts = response.hits.hits;
         });
     };
 
@@ -19,13 +19,9 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         EmpService.deleteData(account);
     };
 
-
-
-
-
-    $scope.checkBeforePushToArray = function (account) {
+    var checkBeforePushToArrayForGUI = function (account) {
         var accountList = $scope.accounts;
-        $scope.isContainElement = function (account, accountList) {
+        var isContainElement = function (account, accountList) {
             for (var i = 0; i < accountList.length; i++) {
                 if (accountList[i]._source.account_number == account._source.account_number) {
                     return true;
@@ -34,7 +30,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
             return false;
         };
 
-        $scope.retrieveOldAccount = function (account, accountList) {
+        var retrieveOldAccount = function (account, accountList) {
             for (var i = 0; i < accountList.length; i++) {
                 if (accountList[i]._source.account_number == account._source.account_number) {
                     return accountList[i];
@@ -43,18 +39,18 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
             return "";
         };
 
-        $scope.isUpdate = function (accountOld, accountNew) {
+        var isUpdate = function (accountOld, accountNew) {
             if (accountNew._source.firstname != accountOld._source.firstname || accountNew._source.lastname != accountOld._source.lastname || accountNew._source.age != accountOld._source.age || accountNew._source.gender != accountOld._source.gender || accountNew._source.address != accountOld._source.address || accountNew._source.employer != accountOld._source.employer || accountNew._source.email != accountOld._source.email) {
                 return true;
             }
             return false;
         };
 
-        if (!$scope.isContainElement(account, $scope.accounts)) {
+        if (!isContainElement(account, $scope.accounts)) {
             $scope.accounts.push(account);
         } else {
-            var oldAccount = $scope.retrieveOldAccount(account, $scope.accounts);
-            if ($scope.isUpdate(oldAccount, account)) {
+            var oldAccount = retrieveOldAccount(account, $scope.accounts);
+            if (isUpdate(oldAccount, account)) {
                 var index = $scope.accounts.indexOf(oldAccount);
                 $scope.accounts.splice(index, 1);
                 $scope.accounts.push(account);
@@ -77,7 +73,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         }, 3000);
     };
 
-    $scope.ageSearch = function (age) {
+    var ageSearch = function (age) {
         var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=age:" + age;
         $http.get(searchAgeUrl)
             .then(function (response) {
@@ -108,7 +104,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
             modal.element.modal(); // open modal dialog
             modal.close.then(function (result) {
                 if (result > 0 && result < 120) {
-                    $scope.ageSearch(result);
+                    ageSearch(result);
                 }
             });
         });
@@ -125,7 +121,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         }).then(function (modal) {
             modal.element.modal(); // open modal dialog
             modal.close.then(function (result) {
-                $scope.checkBeforePushToArray(result);
+                checkBeforePushToArrayForGUI(result);
             });
         });
     };
@@ -141,7 +137,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         }).then(function (modal) {
             modal.element.modal(); // open modal dialog
             modal.close.then(function (result) {
-                $scope.checkBeforePushToArray(result);
+                checkBeforePushToArrayForGUI(result);
             });
         });
     };
