@@ -1,6 +1,6 @@
 app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'close', function ($scope, $http, $timeout, item, close) {
-    "use strict"
-    debugger;
+    "use strict";
+
     //In case of edit employee, populate form with employee data
     $scope.editEmployee = function (item) {
         //debugger;
@@ -20,7 +20,7 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
     //debugger;
     // GET LIST emp
     $scope.initFirst = function () {
-        $http.get('http://localhost:9200/bank/account/_search?size=20')
+        $http.get('http://192.168.95.222:9200/bank/account/_search?size=20')
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
             });
@@ -44,7 +44,7 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
                 description: $scope.description
             }
 
-        }
+        };
 
         var jsonData = JSON.stringify({
             account_number: $scope.accountno,
@@ -63,12 +63,12 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
 
 
 
-        var newUrl = "http://localhost:9200/bank/account/" + $scope.accountno + "?pretty"
+        var newUrl = "http://192.168.95.222:9200/bank/account/" + $scope.accountno + "?pretty";
         var config = {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
-        }
+        };
         $http.put(newUrl, jsonData, config)
             .then(
                 function (response) {
@@ -81,5 +81,5 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
                 }
             );
 
-    }
+    };
 }]);

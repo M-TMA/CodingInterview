@@ -3,7 +3,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
     //debugger;
     // GET LIST emp
     $scope.initFirst = function () {
-        $http.get('http://localhost:9200/bank/account/_search?size=20')
+        $http.get('http://192.168.95.222:9200/bank/account/_search?size=20')
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
             }, function (failure) {
@@ -15,14 +15,14 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
     $scope.deleteEmp = function (account) {
         //debugger;
         var config = {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                }
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
-            // success callback
+        };
+        // success callback
         var index = $scope.accounts.indexOf(account);
         $scope.accounts.splice(index, 1);
-        var urlDel = "http://localhost:9200/bank/account/" + account._source.account_number + "?pretty";
+        var urlDel = "http://192.168.95.222:9200/bank/account/" + account._source.account_number + "?pretty";
         $http.delete(urlDel, config)
             .then(
                 function (response) {
@@ -32,7 +32,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
                     // failure call back
                 }
             );
-    }
+    };
 
 
 
@@ -47,7 +47,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
                 }
             }
             return false;
-        }
+        };
 
         $scope.retrieveOldAccount = function (account, accountList) {
             for (var i = 0; i < accountList.length; i++) {
@@ -56,14 +56,14 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
                 }
             }
             return "";
-        }
+        };
 
         $scope.isUpdate = function (accountOld, accountNew) {
             if (accountNew._source.firstname != accountOld._source.firstname || accountNew._source.lastname != accountOld._source.lastname || accountNew._source.age != accountOld._source.age || accountNew._source.gender != accountOld._source.gender || accountNew._source.address != accountOld._source.address || accountNew._source.employer != accountOld._source.employer || accountNew._source.email != accountOld._source.email) {
                 return true;
             }
             return false;
-        }
+        };
 
         if (!$scope.isContainElement(account, $scope.accounts)) {
             $scope.accounts.push(account);
@@ -76,12 +76,12 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
             }
         }
 
-    }
+    };
 
 
     // get Detail Employer
     $scope.getDetailFromId = function (account) {
-        debugger;
+
         $scope.show = true;
         $scope.des = "";
         $scope.des = account._source.description;
@@ -90,10 +90,10 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
             $scope.show = false;
             $scope.des = "";
         }, 3000);
-    }
+    };
 
     $scope.ageSearch = function (age) {
-        var searchAgeUrl = "http://localhost:9200/bank/account/_search?size=20&q=age:" + age;
+        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=age:" + age;
         $http.get(searchAgeUrl)
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;
@@ -105,7 +105,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
 
 
     $scope.genderSearch = function (gender) {
-        var searchAgeUrl = "http://localhost:9200/bank/account/_search?size=20&q=gender:" + gender;
+        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=gender:" + gender;
         $http.get(searchAgeUrl)
             .then(function (response) {
                 $scope.accounts = response.data.hits.hits;

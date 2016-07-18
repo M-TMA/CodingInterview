@@ -31,7 +31,7 @@ app.controller('SearchModalController', ['$scope', 'close', '$http', function ($
                 }
             }
         }
-        var loadAgeUrl = "http://localhost:9200/bank/account/_search?pretty";
+        var loadAgeUrl = "http://192.168.95.222:9200/bank/account/_search?pretty";
         $http.post(loadAgeUrl, ageGroupByData)
             .then(function (response) {
                 $scope.ageArr = response.data.aggregations.group_by_age.buckets;

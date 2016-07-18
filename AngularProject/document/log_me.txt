@@ -50,3 +50,5 @@ http://campus.codeschool.com/courses/shaping-up-with-angular-js/level/1/section/
 3/ CREATE DIALOG USING MODAL SERVICE -> http://jsfiddle.net/tnhminh/n5539523/
 
 4/ http://plnkr.co/edit/3p1rXAymd7BilyklgxKy?p=preview
+
+5/ Create Dialog using $modal -> http://plnkr.co/edit/?p=preview
