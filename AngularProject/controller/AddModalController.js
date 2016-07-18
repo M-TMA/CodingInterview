@@ -1,7 +1,7 @@
-app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'close', function ($scope, $http, $timeout, item, close) {
+app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'close', 'EmpService', function ($scope, $http, $timeout, item, close, EmpService) {
     "use strict";
 
-    //In case of edit employee, populate form with employee data
+    // item param was inputed from MainController
     var editEmployee = function (item) {
         //debugger;
         $scope.accountno = item._source.account_number;
@@ -17,16 +17,6 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
     if (item != "") {
         editEmployee(item);
     }
-    //debugger;
-    // GET LIST emp
-    $scope.initFirst = function () {
-        $http.get('http://192.168.95.222:9200/bank/account/_search?size=20')
-            .then(function (response) {
-                $scope.accounts = response.data.hits.hits;
-            });
-    };
-    // How to cache accounts to remove this method out of current behaviour
-    $scope.initFirst();
 
     // ADD/EDIT new emp
     $scope.addEmp = function () {
@@ -59,23 +49,8 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
 
         }, null);
 
-        var newUrl = "http://192.168.95.222:9200/bank/account/" + $scope.accountno + "?pretty";
-        var config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
-        };
-        $http.put(newUrl, jsonData, config)
-            .then(
-                function (response) {
-                    // success callback
-                    $scope.account = response.data;
-                    close(account, 500); // close, but give 500ms for bootstrap to animate
-                },
-                function (response) {
-                    // failure callback
-                }
-            );
-
+        //Update data to Database.
+        // 'close' service to close dialog
+        EmpService.updateData(account, jsonData, close);
     };
 }]);

@@ -1,4 +1,4 @@
-app.controller('SearchModalController', ['$scope', 'close', '$http', function ($scope, close, $http) {
+app.controller('SearchModalController', ['$scope', 'close', '$http', 'EmpService', function ($scope, close, $http, EmpService) {
     //debugger;
 
     $scope.Yes = function () {
@@ -19,7 +19,7 @@ app.controller('SearchModalController', ['$scope', 'close', '$http', function ($
     $scope.ageArr = [];
 
 
-    $scope.groupByAge = function () {
+    var groupByAge = function () {
         debugger;
         var ageGroupByData = {
             "size": 0,
@@ -32,13 +32,10 @@ app.controller('SearchModalController', ['$scope', 'close', '$http', function ($
             }
         }
         var loadAgeUrl = "http://192.168.95.222:9200/bank/account/_search?pretty";
-        $http.post(loadAgeUrl, ageGroupByData)
-            .then(function (response) {
-                $scope.ageArr = response.data.aggregations.group_by_age.buckets;
-                $scope.ageArr.splice(0, 1);
-            }, function (failure) {
-                alert("Can't found emp with gender is " + gender);
-            });
+        EmpService.loadAges(loadAgeUrl, ageGroupByData).success(function (response) {
+            $scope.ageArr = response.aggregations.group_by_age.buckets;
+            $scope.ageArr.splice(0, 1);
+        })
     };
-    $scope.groupByAge();
+    groupByAge();
 }]);

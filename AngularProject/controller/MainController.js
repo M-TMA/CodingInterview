@@ -74,25 +74,17 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
     };
 
     var ageSearch = function (age) {
-        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=age:" + age;
-        $http.get(searchAgeUrl)
-            .then(function (response) {
-                $scope.accounts = response.data.hits.hits;
-            }, function (failure) {
-                alert("Can't found emp with " + age + " years old");
-            });
+        EmpService.searchAge(age).success(function (response) {
+            $scope.accounts = response.hits.hits;
+        })
     };
 
 
 
     $scope.genderSearch = function (gender) {
-        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=gender:" + gender;
-        $http.get(searchAgeUrl)
-            .then(function (response) {
-                $scope.accounts = response.data.hits.hits;
-            }, function (failure) {
-                alert("Can't found emp with gender is " + gender);
-            });
+        EmpService.searchGender(gender).success(function (response) {
+            $scope.accounts = response.hits.hits;
+        })
     };
 
     // Open Age Search Dialog
