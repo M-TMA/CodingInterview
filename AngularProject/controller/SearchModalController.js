@@ -31,8 +31,7 @@ app.controller('SearchModalController', ['$scope', 'close', '$http', 'EmpService
                 }
             }
         }
-        var loadAgeUrl = "http://192.168.95.222:9200/bank/account/_search?pretty";
-        EmpService.loadAges(loadAgeUrl, ageGroupByData).success(function (response) {
+        EmpService.loadAges(ageGroupByData).success(function (response) {
             $scope.ageArr = response.aggregations.group_by_age.buckets;
             $scope.ageArr.splice(0, 1);
         })
