@@ -1,12 +1,13 @@
-app.service('EmpService', ['$http', function ($http) {
+app.service('EmpService', ['$http', '$log', function ($http, $log) {
     "use strict";
     // load Data
     this.initDatas = function (size) {
         return $http.get('http://192.168.95.222:9200/bank/account/_search?size=' + size)
             .success(function (response) {
+                $log.info("Inited Data Successfully");
                 return response; // 
             }).error(function (failure) {
-                alert('Please check CORS (should be enable) or content request (should be correct) !!!');
+                $log.error('Please check CORS (should be enable) or content request (should be correct) !!!');
                 return "EMPSERVICE.FAILURE";
             });
     };
@@ -22,9 +23,9 @@ app.service('EmpService', ['$http', function ($http) {
         var urlDel = "http://192.168.95.222:9200/bank/account/" + account._source.account_number + "?pretty";
         $http.delete(urlDel, config)
             .success(function (response) {
-                return "SUCCESS";
-            }).error(function (response) {
-                return "FAILURE";
+                $log.info("Deleted Successfully");
+            }).error(function (failure) {
+                $log.error("Can't delete data -> " + failure);
             });
     };
 
@@ -39,9 +40,11 @@ app.service('EmpService', ['$http', function ($http) {
         };
         return $http.put(newUrl, jsonData, config)
             .success(function (response) {
+                $log.info("Updated Data Successfully");
                 close(account, 500); // close, but give 500ms for bootstrap to animate
             }).error(function (failure) {
                 // failure callback
+                $log.error("Can't Delete Failure -> " + failure);
             });
     };
 
@@ -50,9 +53,10 @@ app.service('EmpService', ['$http', function ($http) {
         var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=gender:" + gender;
         return $http.get(searchAgeUrl)
             .success(function (response) {
+                $log.info("Gender Search Successfully");
                 return response;
             }).error(function (failure) {
-                alert("Can't found emp with gender is " + gender);
+                alert("Can't found emp with gender is ->" + failure);
             });
     };
 
@@ -63,7 +67,7 @@ app.service('EmpService', ['$http', function ($http) {
             .success(function (response) {
                 return response;
             }).error(function (failure) {
-                alert("Can't found emp with " + age + " years old");
+                alert("Can't found emp with " + age + " years old" + "\n -> " + failure);
             });
     };
 
@@ -73,7 +77,7 @@ app.service('EmpService', ['$http', function ($http) {
             .success(function (response) {
                 return response;
             }).error(function (failure) {
-                alert("Can't found emp with gender is " + gender);
+                alert("Can't found emp with gender is " + gender + "\n -> " + failure);
             });
     }
 
