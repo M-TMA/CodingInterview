@@ -1,7 +1,5 @@
 app.service('EmpService', ['$http', function ($http) {
     "use strict";
-
-
     // load Data
     this.initDatas = function (size) {
         return $http.get('http://192.168.95.222:9200/bank/account/_search?size=' + size)

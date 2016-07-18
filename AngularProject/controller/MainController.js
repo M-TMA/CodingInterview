@@ -1,7 +1,7 @@
 var app = angular.module('myApp', ['angularModalService']);
 app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService', 'EmpService', function ($scope, $http, $timeout, ModalService, EmpService) {
 
-
+    "use strict";
     // GET LIST emp with size default
     $scope.initFirst = function (size) {
         EmpService.initDatas(size).success(function (response) {
@@ -20,10 +20,11 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
     };
 
     var checkBeforePushToArrayForGUI = function (account) {
+        var i;
         var accountList = $scope.accounts;
         var isContainElement = function (account, accountList) {
-            for (var i = 0; i < accountList.length; i++) {
-                if (accountList[i]._source.account_number == account._source.account_number) {
+            for (i = 0; i < accountList.length; i++) {
+                if (accountList[i]._source.account_number === account._source.account_number) {
                     return true;
                 }
             }
@@ -31,8 +32,9 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         };
 
         var retrieveOldAccount = function (account, accountList) {
-            for (var i = 0; i < accountList.length; i++) {
-                if (accountList[i]._source.account_number == account._source.account_number) {
+            var i;
+            for (i = 0; i < accountList.length; i++) {
+                if (accountList[i]._source.account_number === account._source.account_number) {
                     return accountList[i];
                 }
             }
@@ -40,7 +42,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         };
 
         var isUpdate = function (accountOld, accountNew) {
-            if (accountNew._source.firstname != accountOld._source.firstname || accountNew._source.lastname != accountOld._source.lastname || accountNew._source.age != accountOld._source.age || accountNew._source.gender != accountOld._source.gender || accountNew._source.address != accountOld._source.address || accountNew._source.employer != accountOld._source.employer || accountNew._source.email != accountOld._source.email) {
+            if (accountNew._source.firstname !== accountOld._source.firstname || accountNew._source.lastname !== accountOld._source.lastname || accountNew._source.age !== accountOld._source.age || accountNew._source.gender !== accountOld._source.gender || accountNew._source.address !== accountOld._source.address || accountNew._source.employer !== accountOld._source.employer || accountNew._source.email !== accountOld._source.email) {
                 return true;
             }
             return false;
@@ -60,23 +62,11 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
     };
 
 
-    // get Detail Employer
-    $scope.getDetailFromId = function (account) {
-
-        $scope.show = true;
-        $scope.des = "";
-        $scope.des = account._source.description;
-        // Sleep 3s and hide description
-        $timeout(function () {
-            $scope.show = false;
-            $scope.des = "";
-        }, 3000);
-    };
 
     var ageSearch = function (age) {
         EmpService.searchAge(age).success(function (response) {
             $scope.accounts = response.hits.hits;
-        })
+        });
     };
 
 
@@ -84,7 +74,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
     $scope.genderSearch = function (gender) {
         EmpService.searchGender(gender).success(function (response) {
             $scope.accounts = response.hits.hits;
-        })
+        });
     };
 
     // Open Age Search Dialog
@@ -131,6 +121,21 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
             modal.close.then(function (result) {
                 checkBeforePushToArrayForGUI(result);
             });
+        });
+    };
+
+
+    // get Detail Employer
+    $scope.getDetailFromId = function (account) {
+        ModalService.showModal({
+            templateUrl: 'desModal.html',
+            controller: "DescriptionModalController",
+            inputs: {
+                item: account
+            }
+        }).then(function (modal) {
+            modal.element.modal(); // open modal dialog
+            modal.close.then(function (result) {});
         });
     };
 }]);

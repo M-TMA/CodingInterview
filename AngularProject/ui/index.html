@@ -7,7 +7,7 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://code.angularjs.org/1.4.9/angular.min.js"></script>
     <script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
@@ -25,12 +25,14 @@
     <script src="../controller/MainController.js"></script>
     <script src="../controller/AddModalController.js"></script>
     <script src="../controller/SearchModalController.js"></script>
+    <script src="../controller/DescriptionModalController.js"></script>
+
 
     <!-- Services -->
     <script src="../services/EmpService.js"></script>
 
-
-
+    <!-- Modals -->
+    <!--script src="../ui/modal/modal.html"></script-->
 
     <link rel="stylesheet" href="../css/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
@@ -191,10 +193,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" ng-click="Cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Add Employer</h4> </div>
+                        <h4 class="modal-title">Add Employer</h4>
+                    </div>
                     <div class="modal-body">
                         <form class="addForm" name="myForm">
-                            <tr style="width:35%;padding-left:105px;padding-right:30px;vertical-align: top">
+                            <tr>
                                 <td class="col-xs-1">
                                     <fieldset class="form-group">
                                         <h4 for="accountNo">ANO</h4>
@@ -278,6 +281,26 @@
             </div>
         </div>
     </script>
+
+    <script type="text/ng-template" id="desModal.html">
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Description</h4> </div>
+                    <div class="modal-body">
+                        <p class="bg-info">{{state}}</p>
+                        <p class="bg-success">{{balance}}</p>
+                        <p class="bg-warning">{{description}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close it</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
 </body>
 
 </html>

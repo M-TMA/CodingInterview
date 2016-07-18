@@ -20,7 +20,7 @@ app.controller('SearchModalController', ['$scope', 'close', '$http', 'EmpService
 
 
     var groupByAge = function () {
-        debugger;
+        // debugger;
         var ageGroupByData = {
             "size": 0,
             "aggs": {

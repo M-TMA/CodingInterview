@@ -1,4 +1,4 @@
-Task for 30/6/2016:
+30/6/2016:
 ----------------------------------------------------------------------------
 1/ Using update/delete API with in elastic search and ng-model to update and delete data
 2/ Sort on column header
@@ -16,7 +16,6 @@ Task for 30/6/2016:
 --------------------------
 5/ http://www.hongkiat.com/blog/css-code-generator-web-apps/
 6/ http://plnkr.co/edit/yVIJoZ?p=preview
-
 
 5/7/2016
 ---------------------------
@@ -52,3 +51,8 @@ http://campus.codeschool.com/courses/shaping-up-with-angular-js/level/1/section/
 4/ http://plnkr.co/edit/3p1rXAymd7BilyklgxKy?p=preview
 
 5/ Create Dialog using $modal -> http://plnkr.co/edit/?p=preview
+
+18/7/2016
+-----------------------------
+1/ using $scope.method when method will be invoked from UI (Sub tag is child of Controller)
+
