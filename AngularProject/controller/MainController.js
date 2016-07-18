@@ -1,37 +1,22 @@
 var app = angular.module('myApp', ['angularModalService']);
-app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService', function ($scope, $http, $timeout, ModalService) {
-    //debugger;
-    // GET LIST emp
-    $scope.initFirst = function () {
-        $http.get('http://192.168.95.222:9200/bank/account/_search?size=20')
-            .then(function (response) {
-                $scope.accounts = response.data.hits.hits;
-            }, function (failure) {
-                alert('Please check CORS to ensure it was be enabled !!!');
-            });
+app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService', 'EmpService', function ($scope, $http, $timeout, ModalService, EmpService) {
+    debugger;
+
+    // GET LIST emp with size default
+    $scope.initFirst = function (size) {
+        EmpService.initDatas(size).success(function (response) {
+            $scope.accounts = response.hits.hits;;
+        });
     };
 
     // Delete Employer
     $scope.deleteEmp = function (account) {
-        //debugger;
-        var config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
-        };
-        // success callback
+        // Delete on gui
         var index = $scope.accounts.indexOf(account);
         $scope.accounts.splice(index, 1);
-        var urlDel = "http://192.168.95.222:9200/bank/account/" + account._source.account_number + "?pretty";
-        $http.delete(urlDel, config)
-            .then(
-                function (response) {
 
-                },
-                function (response) {
-                    // failure call back
-                }
-            );
+        //Delete on Database
+        EmpService.deleteData(account);
     };
 
 

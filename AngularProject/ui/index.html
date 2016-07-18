@@ -20,9 +20,16 @@
     -->
     <script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
     <script src="../js/scroll_to_top.js"></script>
+
+    <!-- Controllers -->
     <script src="../controller/MainController.js"></script>
     <script src="../controller/AddModalController.js"></script>
     <script src="../controller/SearchModalController.js"></script>
+
+    <!-- Services -->
+    <script src="../services/EmpService.js"></script>
+
+
 
 
     <link rel="stylesheet" href="../css/style.css">
@@ -60,7 +67,7 @@
     <table id="mainTable" class="table">
         <table class="table ">
             <tr>
-                <div id="tableResult" ng-init="initFirst()">
+                <div id="tableResult" ng-init="initFirst(25)">
                     <h2><center>Data List</center></h2>
                     <table class="table ">
                         <thead>
