@@ -2,7 +2,7 @@ app.service('EmpService', ['$http', '$log', function ($http, $log) {
     "use strict";
     // load Data
     this.initDatas = function (size) {
-        return $http.get('http://localhost:9200/bank/account/_search?size=' + size)
+        return $http.get('http://192.168.95.222:9200/bank/account/_search?size=' + size)
             .success(function (response) {
                 $log.info("Inited Data Successfully");
                 return response; // 
@@ -20,7 +20,7 @@ app.service('EmpService', ['$http', '$log', function ($http, $log) {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         };
-        var urlDel = "http://localhost:9200/bank/account/" + account._source.account_number + "?pretty";
+        var urlDel = "http://192.168.95.222:9200/bank/account/" + account._source.account_number + "?pretty";
         $http.delete(urlDel, config)
             .success(function (response) {
                 $log.info("Deleted Successfully");
@@ -31,8 +31,8 @@ app.service('EmpService', ['$http', '$log', function ($http, $log) {
 
     // add or update emp
     this.updateData = function (account, jsonData, close) {
-        debugger;
-        var newUrl = "http://localhost:9200/bank/account/" + account._source.account_number + "?pretty";
+
+        var newUrl = "http://192.168.95.222:9200/bank/account/" + account._source.account_number + "?pretty";
         var config = {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
@@ -50,7 +50,7 @@ app.service('EmpService', ['$http', '$log', function ($http, $log) {
 
     // Search Query Gender
     this.searchGender = function (gender) {
-        var searchAgeUrl = "http://localhost:9200/bank/account/_search?size=20&q=gender:" + gender;
+        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=gender:" + gender;
         return $http.get(searchAgeUrl)
             .success(function (response) {
                 $log.info("Gender Search Successfully");
@@ -62,24 +62,28 @@ app.service('EmpService', ['$http', '$log', function ($http, $log) {
 
     // Search Query Age
     this.searchAge = function (age) {
-        var searchAgeUrl = "http://localhost:9200/bank/account/_search?size=20&q=age:" + age;
+        var searchAgeUrl = "http://192.168.95.222:9200/bank/account/_search?size=20&q=age:" + age;
         return $http.get(searchAgeUrl)
             .success(function (response) {
+                $log.info("Age Search Successfully");
                 return response;
             }).error(function (failure) {
+                $log.error("Age Search Failure -> " + failure);
                 alert("Can't found emp with " + age + " years old" + "\n -> " + failure);
             });
     };
 
     // Load Age using GROUP BY Query
     this.loadAges = function (ageGroupByData) {
-        var loadAgeUrl = "http://localhost:9200/bank/account/_search?pretty";
+        var loadAgeUrl = "http://192.168.95.222:9200/bank/account/_search?pretty";
         return $http.post(loadAgeUrl, ageGroupByData)
             .success(function (response) {
+                $log.info("Age Load List Search Successfully");
                 return response;
             }).error(function (failure) {
+                $log.error("Age Load List Search Failure");
                 alert("Can't found emp with gender is " + gender + "\n -> " + failure);
             });
-    }
+    };
 
 }]);

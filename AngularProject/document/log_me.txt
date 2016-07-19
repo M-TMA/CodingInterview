@@ -56,3 +56,10 @@ http://campus.codeschool.com/courses/shaping-up-with-angular-js/level/1/section/
 -----------------------------
 1/ using $scope.method when method will be invoked from UI (Sub tag is child of Controller)
 
+19/7/2016
+-----------------------------
+STYLE GUIDE IN ANGULAR JS -> https://github.com/johnpapa/angular-styleguide/tree/master/a1
+
+EXPLAIN WHY WE USE "THIS" INSTEAD OF $SCOPE IN ANGULAR 1.2 above -> https://www.codeschool.com/discuss/t/shaping-up-with-angularjs-why-use-this-instead-of-scope/4801/19
+
+
