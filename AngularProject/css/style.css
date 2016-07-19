@@ -38,8 +38,15 @@
 .addBackground {
     background-color: chartreuse;
 }
-.text-muted {
-    color: red;
+.text-muted,
+.row > div > span {
+    color: gray;
+    font-size: 9px;
+}
+.text-muted > img,
+.row > div > span > img {
+    width: 15px;
+    height: 15px;
 }
 #descript {
     transition: all linear 0.7s;
@@ -56,4 +63,7 @@
     background-color: transparent;
     top: -200px;
     left: 200px;
+}
+.input-group {
+    margin-top: 10px;
 }

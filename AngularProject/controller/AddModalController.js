@@ -12,6 +12,8 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
         $scope.address = item._source.address;
         $scope.employer = item._source.employer;
         $scope.email = item._source.email;
+        $scope.balance = item._source.balance;
+        $scope.state = item._source.state;
         $scope.description = item._source.description;
     };
     if (item != "") {
@@ -31,6 +33,8 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
                 address: $scope.address,
                 employer: $scope.employer,
                 email: $scope.email,
+                balance: $scope.balance,
+                state: $scope.state,
                 description: $scope.description
             }
 
@@ -45,8 +49,9 @@ app.controller('AddModalController', ['$scope', '$http', '$timeout', 'item', 'cl
             address: $scope.address,
             employer: $scope.employer,
             email: $scope.email,
+            balance: $scope.balance,
+            state: $scope.state,
             description: $scope.description
-
         }, null);
 
         //Update data to Database.

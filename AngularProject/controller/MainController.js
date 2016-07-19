@@ -42,7 +42,7 @@ app.controller('MainController', ['$scope', '$http', '$timeout', 'ModalService',
         };
 
         var isUpdate = function (accountOld, accountNew) {
-            if (accountNew._source.firstname !== accountOld._source.firstname || accountNew._source.lastname !== accountOld._source.lastname || accountNew._source.age !== accountOld._source.age || accountNew._source.gender !== accountOld._source.gender || accountNew._source.address !== accountOld._source.address || accountNew._source.employer !== accountOld._source.employer || accountNew._source.email !== accountOld._source.email) {
+            if (accountNew._source.firstname !== accountOld._source.firstname || accountNew._source.lastname !== accountOld._source.lastname || accountNew._source.age !== accountOld._source.age || accountNew._source.gender !== accountOld._source.gender || accountNew._source.address !== accountOld._source.address || accountNew._source.employer !== accountOld._source.employer || accountNew._source.email !== accountOld._source.email || accountNew._source.balance !== accountOld._source.balance || accountNew._source.state !== accountOld._source.state) {
                 return true;
             }
             return false;

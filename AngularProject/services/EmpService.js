@@ -31,7 +31,7 @@ app.service('EmpService', ['$http', '$log', function ($http, $log) {
 
     // add or update emp
     this.updateData = function (account, jsonData, close) {
-
+        debugger;
         var newUrl = "http://localhost:9200/bank/account/" + account._source.account_number + "?pretty";
         var config = {
             headers: {
